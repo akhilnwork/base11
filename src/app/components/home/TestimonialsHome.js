@@ -1,0 +1,146 @@
+import { cn } from "@/utils/cn";
+import Image from "next/image";
+import Marquee from "react-fast-marquee";
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: false,
+  },
+  {
+    id: 2,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: true,
+  },
+  {
+    id: 3,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: false,
+  },
+  {
+    id: 4,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: true,
+  },
+  {
+    id: 5,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: false,
+  },
+  {
+    id: 6,
+    name: "Amanda Smith",
+    position: "Founder of Mangcoding",
+    image: "/img/amandasmith.png",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+    isActive: true,
+  },
+];
+
+const TestimonialsHome = () => {
+  return (
+    <section className="py-16">
+      <div className="container mx-auto px-5">
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg mb-6">
+            Testimonials
+          </div>
+          <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
+            Hear from our clients
+          </h2>
+        </div>
+      </div>
+      <div className="w-full mb-8">
+        <Marquee
+          speed={80}
+          direction={"right"}
+          pauseOnHover={true}
+          className="w-full"
+        >
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={testimonial.id}
+              testimonial={testimonial}
+              index={index}
+            />
+          ))}
+        </Marquee>
+      </div>
+      <div className="w-full">
+        <Marquee
+          speed={80}
+          direction={"left"}
+          pauseOnHover={true}
+          className="w-full"
+        >
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={testimonial.id}
+              testimonial={testimonial}
+              index={index}
+            />
+          ))}
+        </Marquee>
+      </div>
+    </section>
+  );
+};
+
+const TestimonialCard = ({ testimonial, index }) => {
+  const isEven =
+    index % 2 === 0
+      ? "bg-darkgray-300 border-dimgray-200"
+      : "bg-gray-100 border-dimgray-200";
+  return (
+    <article className="px-4">
+      <div
+        className={cn(
+          `rounded-[20px] border border-dimgray p-6  flex flex-col w-[400px]`,
+          isEven,
+        )}
+      >
+        <div className="flex-1">
+          <p className="text-lg text-gray-300 leading-[27px] mb-6">
+            {testimonial.text}
+          </p>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <Image
+            className="rounded-[10px] w-[60px] h-[60px] object-cover"
+            width={60}
+            height={60}
+            alt={testimonial.name}
+            src={testimonial.image}
+          />
+          <div>
+            <h4 className="text-black font-medium leading-[21.6px]">
+              {testimonial.name}
+            </h4>
+            <p className="text-base text-gray-300 leading-[21.6px]">
+              {testimonial.position}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default TestimonialsHome;

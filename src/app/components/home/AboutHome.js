@@ -1,3 +1,4 @@
+"use client";
 import ButtonLink from "../button/ButtonLink";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
@@ -34,7 +35,14 @@ const AboutHome = () => {
     <section className="py-24">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-6">
+          <div
+            className="space-y-6"
+            data-aos="fade-left"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg">
               About us
             </div>
@@ -42,7 +50,14 @@ const AboutHome = () => {
               A Venue Where Every Event Becomes a Masterpiece
             </h2>
           </div>
-          <div className="space-y-6">
+          <div
+            className="space-y-6"
+            data-aos="fade-right"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div className="flex w-full flex-col">
               <p className="text-lg text-gray-600 leading-relaxed mb-2.5">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -63,7 +78,16 @@ const AboutHome = () => {
           </div>
         </div>
       </div>
-      <article className="w-full pt-16" id="marquue-home-about">
+      <article
+        className="w-full pt-16"
+        id="marquue-home-about"
+        data-aos="fade-left"
+        data-aos-offset="200"
+        data-aos-delay="100"
+        data-aos-duration="600"
+        data-aos-easing="ease-in-out"
+        data-aos-once="false"
+      >
         <Marquee speed={80} pauseOnHover={true} className="w-full">
           {marqueeData.map((item) => (
             <div key={item.id} className="w-full h-full   self-start flex">

@@ -53,7 +53,14 @@ const FeaturesHome = () => {
     <section className="py-28 bg-darkgray-150/20">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-2">
+          <div
+            className="space-y-2"
+            data-aos="fade-left"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg">
               About us
             </div>
@@ -61,7 +68,14 @@ const FeaturesHome = () => {
               A Venue Where Every Event Becomes a Masterpiece
             </h2>
           </div>
-          <div className="space-y-6">
+          <div
+            className="space-y-6"
+            data-aos="fade-right"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div className="flex w-full flex-col">
               <p className="text-lg text-gray-600 leading-relaxed mb-2.5">
                 There are many variations of passages of Lorem Ipsum available,
@@ -80,7 +94,14 @@ const FeaturesHome = () => {
       </div>
       <div className="container mx-auto pt-[45px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="image flex">
+          <div
+            className="image flex"
+            data-aos="fade-left"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <Image
               src="/img/about-home.png"
               className="rounded-4xl"
@@ -89,7 +110,14 @@ const FeaturesHome = () => {
               height="452"
             />
           </div>
-          <div className="block h-[30rem]">
+          <div
+            className="block h-[30rem]"
+            data-aos="fade-right"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <Swiper
               slidesPerView={2}
               autoplay={{

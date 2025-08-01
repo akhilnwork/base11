@@ -27,7 +27,14 @@ const BannerHome = () => {
     <section className="w-full h-screen bg-red-600 relative overflow-hidden">
       <div className="absolute w-screen h-full top-0 right-0 left-0 bottom-0">
         <div className="container h-full relative mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center lg:justify-start">
-          <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left z-10 relative lg:absolute lg:bottom-36">
+          <div
+            className="w-full flex flex-col items-center lg:items-start text-center lg:text-left z-10 relative lg:absolute lg:bottom-36"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <h1 className="capitalize font-geometr415-lt-bt leading-tight sm:leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.313rem] text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none">
               Your Venue
               <br />

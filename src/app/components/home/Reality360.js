@@ -22,7 +22,14 @@ const Reality360 = () => {
 
   return (
     <>
-      <section className="text-center lg:min-h-[700px] min-h-[500px] w-full relative bg-gray-800 text-white flex items-center justify-center">
+      <section
+        className="text-center lg:min-h-[700px] min-h-[500px] w-full relative bg-gray-800 text-white flex items-center justify-center"
+        data-aos="fade-in"
+        data-aos-offset="200"
+        data-aos-duration="500"
+        data-aos-easing="ease-in-out"
+        data-aos-once="false"
+      >
         <Image
           src={"/img/360-image.png"}
           alt="360 Reality"
@@ -33,7 +40,15 @@ const Reality360 = () => {
         />
         <div className="absolute bg-black/20 inset-0"></div>
         <div className="container mx-auto relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-center text-center">
+          <div
+            className="flex flex-col items-center justify-center text-center"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-duration="500"
+            data-aos-delay="100"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-geometr415-lt-bt tracking-tight leading-tight capitalize text-white max-w-4xl">
               <span>Your Event, Your Vision</span>
               <br />

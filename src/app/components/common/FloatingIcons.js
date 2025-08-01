@@ -32,7 +32,6 @@ const FloatingIcons = () => {
         {floatingIcons.map((icon) => (
           <div className="relative w-12 h-12" key={icon.id}>
             <Link
-              
               href={icon.url}
               target={icon.target}
               rel="noopener noreferrer"

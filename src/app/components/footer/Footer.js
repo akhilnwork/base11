@@ -116,143 +116,136 @@ const Footer = () => {
   return (
     <footer className="">
       <article className="flex bg-dimgray-100 text-white flex-col py-12 md:py-16 lg:py-24">
-
-      
-      <div className="container mx-auto px-4 sm:px-5">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12">
-
-          {/* Contact Section - Full width on mobile, half on tablet, 5 cols on desktop */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-5">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="logo">
-              <Link href="/">
-                <Image
-                  src="/svg/ease-eleven-logo.svg"
-                  alt="Logo"
-                  width={152}
-                  height={77}
-                  className="w-32 sm:w-36 md:w-40 lg:w-auto"
-                />
-              </Link>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              {footerData.contact.address.map((line, index) => (
-                <p key={index} className="text-sm sm:text-base">
-                  {line}
-                </p>
-              ))}
-            </div>
-            <div className="pt-3 sm:pt-4 flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/svg/telephone-filed.svg"
-                  alt="phone"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-6 lg:h-6"
-                />
-                <p className="text-base sm:text-lg font-medium">
-                  {footerData.contact.phone}
-                </p>
-              </div>
-              <div className="">
-                <p className="text-sm sm:text-base">
-                  {footerData.contact.email}
-                </p>
+        <div className="container mx-auto px-4 sm:px-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12">
+            {/* Contact Section - Full width on mobile, half on tablet, 5 cols on desktop */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-5">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="logo">
+                  <Link href="/">
+                    <Image
+                      src="/svg/ease-eleven-logo.svg"
+                      alt="Logo"
+                      width={152}
+                      height={77}
+                      className="w-32 sm:w-36 md:w-40 lg:w-auto"
+                    />
+                  </Link>
+                </div>
+                <div className="space-y-1 sm:space-y-2">
+                  {footerData.contact.address.map((line, index) => (
+                    <p key={index} className="text-sm sm:text-base">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+                <div className="pt-3 sm:pt-4 flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/svg/telephone-filed.svg"
+                      alt="phone"
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-6 lg:h-6"
+                    />
+                    <p className="text-base sm:text-lg font-medium">
+                      {footerData.contact.phone}
+                    </p>
+                  </div>
+                  <div className="">
+                    <p className="text-sm sm:text-base">
+                      {footerData.contact.email}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
 
-          {/* Links Section - Full width on mobile, half on tablet, 7 cols on desktop */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
- 
-          {/* Quick Links */}
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-              {footerData.quickLinks.title}
-            </h3>
-            <ul className="space-y-1 sm:space-y-2">
-              {footerData.quickLinks.links.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-sm sm:text-base hover:text-gray-300 transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Links Section - Full width on mobile, half on tablet, 7 cols on desktop */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-7">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                {/* Quick Links */}
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                    {footerData.quickLinks.title}
+                  </h3>
+                  <ul className="space-y-1 sm:space-y-2">
+                    {footerData.quickLinks.links.map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.href}
+                          className="text-sm sm:text-base hover:text-gray-300 transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-          {/* Services */}
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-              {footerData.services.title}
-            </h3>
-            <ul className="space-y-1 sm:space-y-2">
-              {footerData.services.links.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-sm sm:text-base hover:text-gray-300 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                {/* Services */}
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                    {footerData.services.title}
+                  </h3>
+                  <ul className="space-y-1 sm:space-y-2">
+                    {footerData.services.links.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          href={link.href}
+                          className="text-sm sm:text-base hover:text-gray-300 transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-          {/* Other Links & Social */}
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-              {footerData.otherLinks.title}
-            </h3>
-            <ul className="space-y-1 sm:space-y-2 mb-4 sm:mb-6 text-left">
-              {footerData.otherLinks.links.map((link, index) => (
-                <li key={index} className="flex ">
-                  <Link
-                    href={link.href}
-                    className="text-sm sm:text-base hover:text-gray-300 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                {/* Other Links & Social */}
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                    {footerData.otherLinks.title}
+                  </h3>
+                  <ul className="space-y-1 sm:space-y-2 mb-4 sm:mb-6 text-left">
+                    {footerData.otherLinks.links.map((link, index) => (
+                      <li key={index} className="flex ">
+                        <Link
+                          href={link.href}
+                          className="text-sm sm:text-base hover:text-gray-300 transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
 
-            <div>
-              <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
-                {footerData.social.title}
-              </h4>
-              <div className="flex space-x-3 sm:space-x-4">
-                {footerData.social.links.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className="flex items-center justify-center transition-colors"
-                  >
-                    {renderSocialIcon(link.icon)}
-                  </Link>
-                ))}
+                  <div>
+                    <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                      {footerData.social.title}
+                    </h4>
+                    <div className="flex space-x-3 sm:space-x-4">
+                      {footerData.social.links.map((link, index) => (
+                        <Link
+                          key={index}
+                          href={link.href}
+                          className="flex items-center justify-center transition-colors"
+                        >
+                          {renderSocialIcon(link.icon)}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
           </div>
         </div>
-                </div>
-        </article>
-        <article className="flex bg-gray-300 text-white flex-col py-6 sm:py-8">
+      </article>
+      <article className="flex bg-gray-300 text-white flex-col py-6 sm:py-8">
+        <div className="container mx-auto px-4 sm:px-5">
+          {/* Footer Bottom */}
 
-      
-      <div className="container mx-auto px-4 sm:px-5">
-        {/* Footer Bottom */}
-       
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             <p className="text-xs sm:text-sm opacity-80 text-center sm:text-left">
               © 2025 Base Eleven All Rights Reserved
@@ -261,8 +254,7 @@ const Footer = () => {
               {/* Designed By: Script N Pixel */}
             </p>
           </div>
-       
-      </div>
+        </div>
       </article>
     </footer>
   );

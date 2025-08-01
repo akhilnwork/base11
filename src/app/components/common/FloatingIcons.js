@@ -30,9 +30,9 @@ const FloatingIcons = () => {
     <div className="fixed right-6 bottom-24 z-50">
       <div className="w-12 relative flex flex-col gap-4">
         {floatingIcons.map((icon) => (
-          <div className="relative w-12 h-12">
+          <div className="relative w-12 h-12" key={icon.id}>
             <Link
-              key={icon.id}
+              
               href={icon.url}
               target={icon.target}
               rel="noopener noreferrer"

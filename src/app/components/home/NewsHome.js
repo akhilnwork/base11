@@ -37,7 +37,7 @@ const NewsHome = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto">
-        <div className="w-full relative  text-left text-[15.25px] text-gray-300 font-inter">
+        <div className="w-full relative  text-left text-[15.25px] text-black font-inter">
           <div className="flex w-full justify-between items-center">
             <div className="space-y-6">
               <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg">
@@ -55,7 +55,7 @@ const NewsHome = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {blogData.map((item) => (
-            <div key={item} className="space-y-4">
+            <div key={item.id} className="space-y-4">
               <Link href={item.url}>
                 <div className=" rounded-2xl overflow-hidden">
                   <Image
@@ -66,7 +66,7 @@ const NewsHome = () => {
                     height={440}
                   />
                 </div>
-                <h3 className="text-xl font-geometr415-lt-bt capitalize leading-tight">
+                <h3 className="text-xl font-geometr415-lt-bt capitalize leading-relaxed text-black/80 mt-4 ">
                   {item.title}
                 </h3>
               </Link>

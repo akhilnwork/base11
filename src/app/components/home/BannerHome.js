@@ -26,14 +26,14 @@ const BannerHome = () => {
   return (
     <section className="w-full h-screen bg-red-600 relative overflow-hidden">
       <div className="absolute w-screen h-full top-0 right-0 left-0 bottom-0">
-        <div className="container h-full relative mx-auto">
-          <div className="absolute bottom-28 left-0 z-1">
-            <h1 className="capitalize font-geometr415-lt-bt leading-[5.313rem] text-white text-left text-[5rem]">
+        <div className="container h-full relative mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center lg:justify-start">
+          <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left z-10 relative lg:absolute lg:bottom-36">
+            <h1 className="capitalize font-geometr415-lt-bt leading-tight sm:leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.313rem] text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none">
               Your Venue
               <br />
               for Grand Experiences
             </h1>
-            <div className="relative flex mt-10">
+            <div className="relative flex mt-6 sm:mt-8 md:mt-10">
               <ButtonLink href="/" title="Plan Your Event" type="white" />
             </div>
           </div>

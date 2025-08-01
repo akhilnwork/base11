@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const eventsArray = [
   {
     id: 1,
@@ -31,10 +31,10 @@ const eventsArray = [
 ];
 const ServicesHome = () => {
   return (
-    <section className="py-16 ">
+    <section className="py-24 ">
       <div className="container mx-auto px-5">
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg mb-6">
+          <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg mb-5">
             Our Services
           </div>
           <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
@@ -42,7 +42,7 @@ const ServicesHome = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-y-14">
           {eventsArray.map((event, index) => (
             <Events key={event.id} event={event} index={index} />
           ))}
@@ -70,7 +70,7 @@ const Events = ({ event, index }) => {
   };
 
   return (
-    <div className="w-full relative text-left text-lg text-gray font-poppins mb-8 overflow-hidden rounded-[30px] group">
+    <div className="w-full relative text-left text-lg text-gray font-poppins  overflow-hidden rounded-[30px] group">
       <div className="grid grid-cols-12 gap-0">
         <Link
           className={cn(

@@ -114,11 +114,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-dimgray-100 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          {/* Contact Information */}
+    <footer className="">
+      <article className="flex bg-dimgray-100 text-white flex-col py-12 md:py-16 lg:py-24">
+
+      
+      <div className="container mx-auto px-4 sm:px-5">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12">
+
+          {/* Contact Section - Full width on mobile, half on tablet, 5 cols on desktop */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-5">
           <div className="space-y-3 sm:space-y-4">
             <div className="logo">
               <Link href="/">
@@ -127,7 +132,7 @@ const Footer = () => {
                   alt="Logo"
                   width={152}
                   height={77}
-                  className=""
+                  className="w-32 sm:w-36 md:w-40 lg:w-auto"
                 />
               </Link>
             </div>
@@ -143,8 +148,9 @@ const Footer = () => {
                 <Image
                   src="/svg/telephone-filed.svg"
                   alt="phone"
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-6 lg:h-6"
                 />
                 <p className="text-base sm:text-lg font-medium">
                   {footerData.contact.phone}
@@ -157,7 +163,12 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          </div>
 
+          {/* Links Section - Full width on mobile, half on tablet, 7 cols on desktop */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+ 
           {/* Quick Links */}
           <div className="space-y-3 sm:space-y-4">
             <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
@@ -231,20 +242,28 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          </div>
+          </div>
         </div>
+                </div>
+        </article>
+        <article className="flex bg-gray-300 text-white flex-col py-6 sm:py-8">
 
+      
+      <div className="container mx-auto px-4 sm:px-5">
         {/* Footer Bottom */}
-        <div className="border-t border-gray-700 pt-4 sm:pt-6">
+       
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             <p className="text-xs sm:text-sm opacity-80 text-center sm:text-left">
               © 2025 Base Eleven All Rights Reserved
             </p>
             <p className="text-xs sm:text-sm opacity-80 text-center sm:text-right">
-              Designed By: Script N Pixel
+              {/* Designed By: Script N Pixel */}
             </p>
           </div>
-        </div>
+       
       </div>
+      </article>
     </footer>
   );
 };

@@ -38,10 +38,11 @@
 
   --color-whitesmoke: #f6f7f6;
 
-  --font-poppins: var(--font-poppins);
+  /* Font families */
+  --font-poppins: "Poppins", sans-serif;
   --font-geometr415-lt-bt: "Geometr415 Lt BT", sans-serif;
-  --font-inter: var(--font-inter);
-  /* --font-gilda-display: var(--font-gilda-display); */
+  --font-inter: "Inter", sans-serif;
+  /* --font-gilda-display: "Gilda Display", serif; */
 }
 
 #marquue-home-about {
@@ -53,7 +54,7 @@
 
 .grid-swiper {
   .swiper-pagination {
-    bottom: 0 !important ;
+    bottom: 0 !important;
   }
   .swiper-pagination-bullet {
     width: 0.75rem;
@@ -67,5 +68,24 @@
     background: var(--color-darkgray-150);
     opacity: 1;
     width: 2.6875rem;
+  }
+}
+
+.faclities {
+  .swiper-pagination {
+    right: 25px !important;
+  }
+  .swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color-darkgray-150);
+    opacity: 0.8;
+    transition: all 0.3s ease !important;
+    border-radius: 0.75rem;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--color-white);
+    opacity: 1;
+    height: 2.6875rem;
   }
 }

@@ -48,6 +48,7 @@ const BannerHome = () => {
       </div>
       <div className="relative w-full h-full">
         <div className="w-full absolute top-0 left-0 right-0 [background:linear-gradient(0deg,_rgba(12,_12,_12,_0),_rgba(12,_12,_12,_0.6))] h-[50%] z-2"></div>
+
         {/*video start  */}
         <video
           className="absolute inset-0 w-full h-full object-cover"

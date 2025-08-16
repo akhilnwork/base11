@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
       <body
       // className={`${poppins.variable} ${inter.variable} ${gildaDisplay.variable}`}
       >
-        <div className="wrap overflow-y-hidden">
+        <div className="wrap">
           <Header />
           {children}
           <Footer />

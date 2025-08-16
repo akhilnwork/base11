@@ -15,13 +15,13 @@ const Footer = () => {
     quickLinks: {
       title: "Quick Links",
       links: [
-        { name: "Home", href: "#" },
-        { name: "About Us", href: "#" },
-        { name: "Facilities", href: "#" },
-        { name: "Virtual Tour", href: "#" },
-        { name: "Gallery", href: "#" },
-        { name: "Contact Us", href: "#" },
-        { name: "Blog", href: "#" },
+        { name: "Home", href: "/" },
+        { name: "About Us", href: "/about" },
+        { name: "Facilities", href: "/facilities" },
+        { name: "Virtual Tour", href: "/virtual-tour" },
+        { name: "Gallery", href: "/gallery" },
+        { name: "Contact Us", href: "/contact" },
+        { name: "Blog", href: "/blog" },
       ],
     },
     services: {
@@ -36,9 +36,9 @@ const Footer = () => {
     otherLinks: {
       title: "Other Links",
       links: [
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms and Conditions", href: "#" },
-        { name: "FAQ", href: "#" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
+        { name: "Terms and Conditions", href: "/terms-and-conditions" },
+        { name: "FAQ", href: "/faq" },
       ],
     },
     social: {

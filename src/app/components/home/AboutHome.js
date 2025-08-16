@@ -2,6 +2,7 @@
 import ButtonLink from "../button/ButtonLink";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
+import Hgroup from "../common/Hgroup";
 
 const marqueeData = [
   {
@@ -35,21 +36,11 @@ const AboutHome = () => {
     <section className="py-24">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div
-            className="space-y-6"
-            data-aos="fade-left"
-            data-aos-offset="200"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
-          >
-            <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg">
-              About us
-            </div>
-            <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
-              A Venue Where Every Event Becomes a Masterpiece
-            </h2>
-          </div>
+          <Hgroup
+            title="A Venue Where Every Event Becomes a Masterpiece"
+            preTitle="About Us"
+            align="left"
+          />
           <div
             className="space-y-6"
             data-aos="fade-right"

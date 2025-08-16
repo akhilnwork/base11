@@ -24,15 +24,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isHomePage) {
+     // if (isHomePage) {
         setIsScrolled(window.scrollY > 0);
-      }
+    //  }
     };
 
-    if (isHomePage) {
+   // if (isHomePage) {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
-    }
+   // }
   }, [isHomePage]);
 
   // Close mobile menu when route changes
@@ -45,7 +45,7 @@ const Header = () => {
       "fixed w-full top-0 right-0 left-0 text-gray-1100 py-3 z-50 transition-all duration-300";
 
     if (isHomePage) {
-      return `${baseClasses} ${isScrolled ? "bg-grayheader" : "bg-transparent"}`;
+      return `${baseClasses} ${isScrolled  ? "bg-grayheader" : "bg-transparent"}`;
     } else {
       return `${baseClasses} bg-grayheader`;
     }
@@ -66,7 +66,7 @@ const Header = () => {
                 alt="Logo"
                 width={200}
                 height={106}
-                className="lg:h-26 md:h-20 h-15"
+                className={cn("lg:h-26 md:h-20 h-15 transition-all duration-150", isScrolled ? "lg:h-20": "")}
               />
             </Link>
           </div>

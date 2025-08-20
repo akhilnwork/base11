@@ -8,11 +8,11 @@ export default function ContactPage() {
     <>
       <InnerBanner src="/img/banner/contact-banner.png" title="Contact Us" />
 
-      <section className="relative w-full flex flex-row py-20">
+      <section className="relative w-full flex flex-row py-20 overflow-x-hidden">
         <div className="container mx-auto px-5">
-            <div className="flex pb-12">
-                <Hgroup title="Contact Us" preTitle="Get In Touch" align="left" />
-            </div>
+          <div className="flex pb-12">
+            <Hgroup title="Contact Us" preTitle="Get In Touch" align="left" />
+          </div>
           <div className="grid grid-cols-12 gap-x-20">
             <ContactFom />
             <ContactDetails />

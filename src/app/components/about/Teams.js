@@ -7,85 +7,84 @@ const Teams = () => {
       name: "Jessica Mercedes",
       position: "Chairman",
       image: "1.png",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
     },
     {
       id: 2,
       name: "Jessica Mercedes",
       position: "Chairman",
       image: "2.png",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
     },
     {
       id: 3,
       name: "Jessica Mercedes",
       position: "Chairman",
       image: "3.png",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
     },
     {
       id: 4,
       name: "Jessica Mercedes",
       position: "Chairman",
       image: "4.png",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
-    }
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+    },
   ];
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-5 lg:px-6">
-        {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {teamMembers.map((member) => (
-            <div key={member.id} className="relative w-full group">
-              {/* Background Image */}
-              <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
-                <Image 
-                  className="w-full h-full rounded-t-[20px] sm:rounded-t-[25px] lg:rounded-t-[30px] object-cover"
-                  width={387} 
-                  height={450} 
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  alt={member.name}
-                  src={`/img/people/${member.image}`}
-                />
-                
-                {/* Overlay - Only on desktop (lg and above) */}
-                <div className="hidden lg:block absolute inset-0 rounded-t-[30px] bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
-              </div>
-              
-              {/* Content Section - Below image on mobile/tablet, overlay on desktop */}
-              <div className="lg:absolute lg:bottom-2.5 lg:left-2.5 lg:right-2.5 p-3 sm:p-4 lg:p-6 duration-300 transition-all bg-darkgray-150/80 lg:group-hover:bg-darkgray-150 rounded-b-[20px] sm:rounded-b-[25px] lg:rounded-[30px]">
-                {/* Name */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-['Geometr415_Lt_BT'] capitalize mb-1 sm:mb-2 text-white">
-                  {member.name}
-                </h3>
-                
-                {/* Position */}
-                <p className="text-sm sm:text-base capitalize font-poppins mb-2 sm:mb-3 text-white/90">
-                  {member.position}
-                </p>
-                
-                {/* Description - Always visible on mobile/tablet, hover effect on desktop */}
-                <div className="block lg:hidden">
-                  {/* Mobile/Tablet: Always visible */}
-                  <p className="text-xs sm:text-sm lg:text-base font-poppins leading-[1.4] sm:leading-[1.5] lg:leading-[27px] text-white/90">
-                    {member.description}
-                  </p>
-                </div>
-                
-                <div className="hidden lg:block max-h-0 duration-300 transition-all group-hover:max-h-[300px] overflow-hidden">
-                  {/* Desktop: Hover effect */}
-                  <p className="text-base font-poppins leading-[27px] text-white/90">
-                    {member.description}
-                  </p>
-                </div>
-              </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-black ">
+      {teamMembers.map((member) => (
+        <div key={member.id} className="relative w-full group">
+          {/* Background Image */}
+          <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+            <Image
+              className="w-full h-full rounded-t-[20px] sm:rounded-t-[25px] lg:rounded-t-[30px]  lg:rounded-b-[30px] object-cover object-top lg:object-center"
+              width={387}
+              height={450}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              alt={member.name}
+              src={`/img/people/${member.image}`}
+            />
+
+            {/* Overlay - Only on desktop (lg and above) */}
+            <div className="hidden lg:block absolute inset-0  lg:rounded-b-[30px] rounded-t-[30px] bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
+          </div>
+
+          {/* Content Section - Below image on mobile/tablet, overlay on desktop */}
+          <div className="lg:absolute lg:bottom-2.5 lg:left-2.5 lg:right-2.5 p-3 sm:p-4 lg:p-6 duration-300 transition-all bg-darkgray-150/80 lg:group-hover:bg-darkgray-150 rounded-b-[20px] sm:rounded-b-[25px] lg:rounded-[30px]">
+            {/* Name */}
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-['Geometr415_Lt_BT'] capitalize mb-1 sm:mb-2 text-black">
+              {member.name}
+            </h3>
+
+            {/* Position */}
+            <p className="text-sm sm:text-base capitalize font-poppins mb-2 sm:mb-3 text-black/90">
+              {member.position}
+            </p>
+
+            {/* Description - Always visible on mobile/tablet, hover effect on desktop */}
+            <div className="block lg:hidden">
+              {/* Mobile/Tablet: Always visible */}
+              <p className="text-xs sm:text-sm lg:text-base font-poppins leading-[1.4] sm:leading-[1.5] lg:leading-[27px] text-black/90">
+                {member.description}
+              </p>
             </div>
-          ))}
+
+            <div className="hidden lg:block max-h-0 duration-300 transition-all group-hover:max-h-[300px] overflow-hidden">
+              {/* Desktop: Hover effect */}
+              <p className="text-base font-poppins leading-[27px] text-black/90">
+                {member.description}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 

@@ -33,7 +33,7 @@ const marqueeData = [
 ];
 const AboutHome = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 overflow-x-hidden">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <Hgroup
@@ -50,13 +50,13 @@ const AboutHome = () => {
             data-aos-once="false"
           >
             <div className="flex w-full flex-col">
-              <p className="text-lg text-gray-600 leading-relaxed mb-2.5">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed mb-2.5">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry&apos;s standard
                 dummy text ever since the 1500s, when an unknown printer took a
                 galley of type and scrambled it to make a type specimen book.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
                 injected humour, or randomised words which don&apos;t look even

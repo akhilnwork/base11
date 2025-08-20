@@ -9,6 +9,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import ButtonAction from "../button/ButtonAction";
+import PopUp from "../common/PopUp";
+import useModal from "@/hooks/useModal";
 
 const facilitiesData = {
   title: "Facilities",
@@ -85,6 +87,7 @@ const FacilitiesCard = memo(function FacilitiesCard({
   preTitle,
   isPriority,
   isEven,
+  onEnquire,
 }) {
   const imageAlt = section?.title
     ? `${section.title}${section?.category ? ` - ${section.category}` : ""}`
@@ -134,10 +137,10 @@ const FacilitiesCard = memo(function FacilitiesCard({
             <div className="w-full relative font-geometr415-lt-bt flex">
               <Hgroup title={section.title} preTitle={preTitle} align="left" />
             </div>
-            <div className="self-stretch relative text-lg leading-[27px] text-black">
+            <div className="self-stretch relative text-sm sm:text-base lg:text-lg leading-[27px] text-black">
               {section.description}
             </div>
-            <div className="relative text-base ">
+            <div className="relative text-sm sm:text-base">
               <ul className="m-0 font-inherit leading-[30px] pl-[21px] list-disc list-inside">
                 {section.features?.map((feature, index) => (
                   <li key={index} className="mb-0">
@@ -148,7 +151,11 @@ const FacilitiesCard = memo(function FacilitiesCard({
             </div>
 
             <div className="w-full flex">
-              <ButtonAction title={"Enquire Now"} type="white" />
+              <ButtonAction
+                title={"Enquire Now"}
+                type="white"
+                onClick={onEnquire}
+              />
             </div>
           </div>
         </div>
@@ -158,6 +165,8 @@ const FacilitiesCard = memo(function FacilitiesCard({
 });
 
 const FacilitiesSection = () => {
+  const contactModal = useModal(false);
+
   return (
     <>
       {facilitiesData.sections.map((section, index) => (
@@ -167,8 +176,15 @@ const FacilitiesSection = () => {
           preTitle={facilitiesData.title}
           isPriority={index === 0}
           isEven={index % 2 === 1}
+          onEnquire={contactModal.open}
         />
       ))}
+      <PopUp
+        isOpen={contactModal.isOpen}
+        onClose={contactModal.close}
+        title="Enquire Now"
+        preTitle="Contact"
+      />
     </>
   );
 };

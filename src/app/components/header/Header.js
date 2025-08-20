@@ -11,7 +11,7 @@ const links = [
   { name: "About Us", href: "/about" },
   { name: "Virtual Tour", href: "/virtual-tour" },
   { name: "Facilities", href: "/facilities" },
-  { name: "Venues", href: "/venues" },
+  { name: "Venues", href: "/venues/1" },
   { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
 ];
@@ -24,15 +24,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-     // if (isHomePage) {
-        setIsScrolled(window.scrollY > 0);
-    //  }
+      // if (isHomePage) {
+      setIsScrolled(window.scrollY > 0);
+      //  }
     };
 
-   // if (isHomePage) {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-   // }
+    // if (isHomePage) {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+    // }
   }, [isHomePage]);
 
   // Close mobile menu when route changes
@@ -45,7 +45,7 @@ const Header = () => {
       "fixed w-full top-0 right-0 left-0 text-gray-1100 py-3 z-50 transition-all duration-300";
 
     if (isHomePage) {
-      return `${baseClasses} ${isScrolled  ? "bg-grayheader" : "bg-transparent"}`;
+      return `${baseClasses} ${isScrolled ? "bg-grayheader" : "bg-transparent"}`;
     } else {
       return `${baseClasses} bg-grayheader`;
     }
@@ -59,14 +59,17 @@ const Header = () => {
     <>
       <header className={getHeaderClasses()}>
         <div className="container mx-auto h-full flex items-center justify-between relative px-5">
-          <div className="logo">
-            <Link href="/">
+          <div className="logo flex justify-start items-start">
+            <Link href="/" className="">
               <Image
                 src="/svg/ease-eleven-logo.svg"
                 alt="Logo"
                 width={200}
                 height={106}
-                className={cn("lg:h-26 md:h-20 h-15 transition-all duration-150", isScrolled ? "lg:h-20": "")}
+                className={cn(
+                  "lg:h-26 md:h-20 h-15 transition-all duration-150 m-0 w-auto",
+                  !isScrolled && isHomePage ? "lg:h-26" : "lg:h-20",
+                )}
               />
             </Link>
           </div>
@@ -100,7 +103,7 @@ const Header = () => {
                   </li>
                 );
               })}
-              <li className="flex flex-col lg:h-full justify-center items-center">
+              <li className="flex flex-col lg:h-full justify-center items-center mt-10 md:mt-0">
                 <ButtonLink
                   title="Contact Us"
                   href="/contact"

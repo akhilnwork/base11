@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import ButtonLink from "../button/ButtonLink";
+import Hgroup from "../common/Hgroup";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,7 +11,7 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 
 // import required modules
-import { Grid, Pagination } from "swiper/modules";
+import { Grid, Pagination, Autoplay } from "swiper/modules";
 const features = [
   {
     id: 1,
@@ -50,10 +51,10 @@ const features = [
 ];
 const FeaturesHome = () => {
   return (
-    <section className="py-28 bg-darkgray-150/20">
+    <section className="py-28 bg-darkgray-150/20  overflow-x-hidden">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div
+         {/*} <div
             className="space-y-2"
             data-aos="fade-left"
             data-aos-offset="200"
@@ -67,7 +68,8 @@ const FeaturesHome = () => {
             <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
               A Venue Where Every Event Becomes a Masterpiece
             </h2>
-          </div>
+          </div>*/}
+          <Hgroup preTitle="About us" title="A Venue Where Every Event Becomes a Masterpiece" align="left" />  
           <div
             className="space-y-6"
             data-aos="fade-right"
@@ -77,7 +79,7 @@ const FeaturesHome = () => {
             data-aos-once="false"
           >
             <div className="flex w-full flex-col">
-              <p className="text-lg text-gray-600 leading-relaxed mb-2.5">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed mb-2.5">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
                 injected humour, or randomised words which don&apos;t look even
@@ -92,8 +94,8 @@ const FeaturesHome = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto pt-[45px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto pt-[45px] pb-12 px-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative">
           <div
             className="image flex"
             data-aos="fade-left"
@@ -111,7 +113,7 @@ const FeaturesHome = () => {
             />
           </div>
           <div
-            className="block h-[30rem]"
+            className="block h-[25rem] sm:h-[28rem] lg:h-[30rem]"
             data-aos="fade-right"
             data-aos-offset="200"
             data-aos-duration="500"
@@ -119,17 +121,31 @@ const FeaturesHome = () => {
             data-aos-once="false"
           >
             <Swiper
-              slidesPerView={2}
+              slidesPerView={1.2}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
               }}
               loop={true}
-              spaceBetween={30}
+              spaceBetween={20}
               pagination={{
                 clickable: true,
               }}
-              modules={[Grid, Pagination]}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 25,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+                1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+              }}
+              modules={[Grid, Pagination, Autoplay]}
               className="grid-swiper"
             >
               {features.reduce((acc, feature, idx) => {
@@ -169,7 +185,7 @@ const Feature = ({ feature }) => {
         <h3 className="text-2xl font-geometr415-lt-bt capitalize tracking-tight">
           {feature.title}
         </h3>
-        <p className={`text-base font-poppins tracking-normal `}>
+        <p className={`text-sm sm:text-base font-['Poppins'] tracking-normal leading-relaxed`}>
           {feature.desc}
         </p>
       </div>

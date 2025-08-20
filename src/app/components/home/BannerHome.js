@@ -1,27 +1,40 @@
 "use client";
 
 import React from "react";
-import ButtonLink from "../button/ButtonLink";
+import ButtonAction from "../button/ButtonAction";
+import PopUp from "../common/PopUp";
+import useModal from "@/hooks/useModal";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const BannerHome = () => {
   const slides = [
     {
       id: 1,
-      image: "/img/banner.png",
+      video: "/video/test-video.mp4",
+      type: "video/mp4",
     },
     {
       id: 2,
-      image: "/img/corporate-events.png",
+      video: "/video/test-video.mp4",
+      type: "video/mp4",
     },
     {
       id: 3,
-      image: "/img/weddings.png",
+      video: "/video/test-video.mp4",
+      type: "video/mp4",
     },
+
     {
       id: 4,
-      image: "/img/exhibitions-conference.png",
+      video: "/video/test-video.mp4",
+      type: "video/mp4",
     },
   ];
+
+  const contactModal = useModal(false);
 
   return (
     <section className="w-full h-screen bg-red-600 relative overflow-hidden">
@@ -41,38 +54,49 @@ const BannerHome = () => {
               for Grand Experiences
             </h1>
             <div className="relative flex mt-6 sm:mt-8 md:mt-10">
-              <ButtonLink href="/" title="Plan Your Event" type="white" />
+              <ButtonAction
+                title="Plan Your Event"
+                type="white"
+                onClick={contactModal.open}
+              />
             </div>
           </div>
         </div>
       </div>
-      <div className="relative w-full h-full">
-        <div className="w-full absolute top-0 left-0 right-0 [background:linear-gradient(0deg,_rgba(12,_12,_12,_0),_rgba(12,_12,_12,_0.6))] h-[50%] z-2"></div>
-
-        {/*video start  */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
+      <article className="swiper w-full h-screen banner-swiper">
+        <Swiper
+          modules={[Pagination]}
+          pagination={{ clickable: true }}
           loop
-          playsInline
-          controls={false}
-          onLoadedMetadata={(e) => {
-            // Request fullscreen when video loads
-            // if (e.target.requestFullscreen) {
-            //   e.target.requestFullscreen();
-            // } else if (e.target.webkitRequestFullscreen) {
-            //   e.target.webkitRequestFullscreen();
-            // } else if (e.target.msRequestFullscreen) {
-            //   e.target.msRequestFullscreen();
-            // }
-          }}
+          className="w-full h-full"
         >
-          <source src="/video/test-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* video end */}
-      </div>
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id} className="w-full h-full">
+              <div className="relative w-full h-screen">
+                <div className="w-full absolute top-0 left-0 right-0 [background:linear-gradient(0deg,_rgba(12,_12,_12,_0),_rgba(12,_12,_12,_0.6))] h-[50%] z-2"></div>
+                <video
+                  className="absolute inset-0 w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls={false}
+                >
+                  <source src={slide.video} type={slide.type} />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </article>
+
+      <PopUp
+        isOpen={contactModal.isOpen}
+        onClose={contactModal.close}
+        title="Plan Your Event"
+        preTitle="Contact"
+      />
     </section>
   );
 };

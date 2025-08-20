@@ -7,8 +7,9 @@ import ServicesHome from "./components/home/ServicesHome";
 import Reality360 from "./components/home/Reality360";
 import NewsHome from "./components/home/NewsHome";
 import TestimonialsHome from "./components/home/TestimonialsHome";
+import HomeTabs from "./components/home/HomeTabs";
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
+import "aos/dist/aos.css";
 
 export default function Home() {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Home() {
       <FeaturesHome />
       <ServicesHome />
       <Reality360 />
+      <HomeTabs />
       <TestimonialsHome />
       <NewsHome />
     </div>

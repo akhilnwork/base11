@@ -3,7 +3,7 @@ const InnerBanner = ({ src, title }) => {
   return (
     <section className="w-full relative mt-20">
       <Image
-        className=" w-full h- object-cover"
+        className=" w-full min-h-75 object-cover"
         width={1920}
         height={500}
         alt={title}

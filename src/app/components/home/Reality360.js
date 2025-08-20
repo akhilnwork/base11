@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState } from "react";
+import VideoModal from "../common/VideoModal";
 
 const Reality360 = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const videoRef = useRef(null);
 
   const handlePlayClick = () => {
     setModalOpen(true);
@@ -14,16 +14,10 @@ const Reality360 = () => {
     setModalOpen(false);
   };
 
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) {
-      handleCloseModal();
-    }
-  };
-
   return (
     <>
       <section
-        className="text-center lg:min-h-[700px] min-h-[500px] w-full relative bg-gray-800 text-white flex items-center justify-center"
+        className="text-center lg:min-h-[700px] min-h-[500px] w-full relative bg-gray-800 text-white flex items-center justify-center overflow-x-hidden"
         data-aos="fade-in"
         data-aos-offset="200"
         data-aos-duration="500"
@@ -81,54 +75,11 @@ const Reality360 = () => {
       </section>
 
       {/* Modal Video */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
-            onClick={handleBackdropClick}
-          />
-
-          {/* Modal Content */}
-          <div className="relative w-full max-w-5xl mx-auto">
-            <div className="bg-black rounded-3xl shadow-2xl overflow-hidden aspect-video">
-              <video
-                ref={videoRef}
-                width="1920"
-                height="1080"
-                loop
-                controls
-                autoPlay
-                className="w-full h-full object-cover"
-              >
-                <source src="/video/test-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-
-            {/* Close Button */}
-            <button
-              onClick={handleCloseModal}
-              className="absolute -top-4 -right-4 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-200"
-              aria-label="Close modal"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+      <VideoModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        videoSrc="/video/test-video.mp4"
+      />
     </>
   );
 };

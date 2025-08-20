@@ -1,6 +1,7 @@
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import Hgroup from "../common/Hgroup";
 
 const testimonials = [
   {
@@ -55,16 +56,20 @@ const testimonials = [
 
 const TestimonialsHome = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 overflow-x-hidden">
       <div className="container mx-auto px-5">
-        <div className="text-center mb-16">
+        {/*<div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg mb-6">
             Testimonials
           </div>
           <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
             Hear from our clients
           </h2>
+        </div>*/}
+        <div className="mb-16">
+          <Hgroup preTitle="Testimonials" title="Hear from our clients" align="center" />  
         </div>
+        
       </div>
       <div className="w-full mb-8">
         <Marquee
@@ -116,7 +121,7 @@ const TestimonialCard = ({ testimonial, index }) => {
         )}
       >
         <div className="flex-1">
-          <p className="text-lg text-gray-300 leading-[27px] mb-6">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-[27px] mb-6">
             {testimonial.text}
           </p>
         </div>
@@ -133,7 +138,7 @@ const TestimonialCard = ({ testimonial, index }) => {
             <h4 className="text-black font-medium leading-[21.6px]">
               {testimonial.name}
             </h4>
-            <p className="text-base text-gray-300 leading-[21.6px]">
+            <p className="text-sm sm:text-base text-gray-300 leading-[21.6px]">
               {testimonial.position}
             </p>
           </div>

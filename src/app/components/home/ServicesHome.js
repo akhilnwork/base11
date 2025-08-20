@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
+import useHoverCursor from "@/hooks/useHoverCursor";
+import HoverCursor from "../common/HoverCursor";
+import Hgroup from "../common/Hgroup";
 const eventsArray = [
   {
     id: 1,
@@ -31,9 +34,9 @@ const eventsArray = [
 ];
 const ServicesHome = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
       <div className="container mx-auto px-4 sm:px-5 lg:px-8">
-        <div
+        {/*<div
           className="text-center mb-12 sm:mb-14 md:mb-16"
           data-aos="fade-top"
           data-aos-offset="200"
@@ -47,13 +50,14 @@ const ServicesHome = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
             Discover Unmatched Comfort and Style
           </h2>
-        </div>
+        </div>}
 
         <div className="flex flex-col gap-y-8 sm:gap-y-10 md:gap-y-12 lg:gap-y-14">
           {eventsArray.map((event, index) => (
             <Events key={event.id} event={event} index={index} />
-          ))}
-        </div>
+          ))
+          
+        </div>*/}<Hgroup preTitle="Our Services" title="Discover Unmatched Comfort and Style" align="center" />  
       </div>
     </section>
   );
@@ -61,20 +65,13 @@ const ServicesHome = () => {
 
 const Events = ({ event, index }) => {
   const isEven = index % 2 === 0;
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [showCustomCursor, setShowCustomCursor] = useState(false);
-
-  const handleMouseMove = (e) => {
-    setCursorPosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleMouseEnter = () => {
-    setShowCustomCursor(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowCustomCursor(false);
-  };
+  const {
+    cursorPosition,
+    showCursor,
+    handleMouseMove,
+    handleMouseEnter,
+    handleMouseLeave,
+  } = useHoverCursor();
 
   return (
     <div
@@ -120,7 +117,7 @@ const Events = ({ event, index }) => {
               <h3 className="text-2xl sm:text-2xl md:text-3xl font-geometr415-lt-bt tracking-tight capitalize text-black leading-tight">
                 {event.title}
               </h3>
-              <p className="text-base sm:text-lg leading-relaxed text-gray-600">
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-gray-600">
                 {event.description}
               </p>
             </div>
@@ -129,20 +126,10 @@ const Events = ({ event, index }) => {
       </div>
 
       {/* Custom Cursor */}
-      {showCustomCursor && (
-        <div
-          className="fixed pointer-events-none z-50 transition-opacity duration-200"
-          style={{
-            left: cursorPosition.x - 50,
-            top: cursorPosition.y - 50,
-          }}
-        >
-          <div className="h-[100px] w-[100px] bg-white/10 rounded-full [backdrop-filter:blur(3.6px)] flex flex-col items-center justify-center text-base text-white font-poppins tracking-[-0.02em] leading-5 capitalize">
-            <p className="m-0 leading-tight">View</p>
-            <p className="m-0 leading-tight">More</p>
-          </div>
-        </div>
-      )}
+      <HoverCursor show={showCursor} x={cursorPosition.x} y={cursorPosition.y}>
+        <p className="m-0 leading-tight">View</p>
+        <p className="m-0 leading-tight">More</p>
+      </HoverCursor>
     </div>
   );
 };

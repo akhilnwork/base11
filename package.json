@@ -10,9 +10,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "aos": "^3.0.0-beta.6",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.16.0",
+    "gsap": "^3.13.0",
+    "lightgallery": "^2.9.0-beta.1",
     "next": "15.4.5",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",

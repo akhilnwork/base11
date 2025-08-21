@@ -113,7 +113,6 @@ const TeamAndMessage = () => {
         "Dear Patrons,",
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-    
       ],
     },
     {
@@ -130,7 +129,7 @@ const TeamAndMessage = () => {
 
   return (
     <section
-      className="w-full relative pt-32 pb-20 bg-darkgray-150/60 overflow-x-hidden"
+      className="w-full relative lg:pt-32  pt-20 pb-20 bg-darkgray-150/60 overflow-x-hidden"
       ref={containerRef}
       id="team-message-container"
     >
@@ -164,7 +163,7 @@ const TeamAndMessage = () => {
                 </div>
 
                 {/* Message Content */}
-                <div className="relative w-full bg-stone-400 2xl:h-[475px] box-border rounded-[20px] sm:rounded-[25px] lg:rounded-[30px] p-4 sm:p-6 lg:p-8 xl:p-14 outline outline-white/10 col-span-2">
+                <div className="relative w-full bg-stone-400 2xl:h-[440px] box-border rounded-[20px] sm:rounded-[25px] lg:rounded-[30px] p-4 sm:p-6 lg:p-8 xl:p-14 outline outline-white/10 col-span-2">
                   <div className="relative z-10">
                     <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-normal font-['Geometr415_Lt_BT'] capitalize text-black mb-3 sm:mb-4 lg:mb-5">
                       {item.title}

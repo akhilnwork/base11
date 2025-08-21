@@ -27,8 +27,9 @@ export default function Home() {
       <FeaturesHome />
       <ServicesHome />
       <Reality360 />
-      <HomeTabs />
+
       <TestimonialsHome />
+      <HomeTabs />
       <NewsHome />
     </div>
   );

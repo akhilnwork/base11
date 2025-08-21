@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/utils/cn";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -74,9 +75,12 @@ const HomeTabs = () => {
   return (
     <section className="py-25 overflow-x-hidden">
       <div className="container mx-auto px-5">
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
-          <Hgroup preTitle="Best solutions for" title="Lorem Ipsum is simply dummy  text of the printing" align="left" />  
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
+          <Hgroup
+            preTitle="Best solutions for"
+            title="Lorem Ipsum is simply dummy  text of the printing"
+            align="left"
+          />
           <div
             className="space-y-6"
             data-aos="fade-right"
@@ -95,11 +99,8 @@ const HomeTabs = () => {
                 embarrassing hidden in the middle of text.
               </p>
             </div>
-
           </div>
         </div>
-
-
 
         <div className="flex flex-col gap-4 md:flex-row md:gap-[15px]">
           {tabs.map((tab) => {

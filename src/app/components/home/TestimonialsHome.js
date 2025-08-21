@@ -56,7 +56,7 @@ const testimonials = [
 
 const TestimonialsHome = () => {
   return (
-    <section className="py-24 overflow-x-hidden">
+    <section className="py-24 overflow-x-hidden bg-darkgray-150/20">
       <div className="container mx-auto px-5">
         {/*<div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg mb-6">
@@ -67,9 +67,12 @@ const TestimonialsHome = () => {
           </h2>
         </div>*/}
         <div className="mb-16">
-          <Hgroup preTitle="Testimonials" title="Hear from our clients" align="center" />  
+          <Hgroup
+            preTitle="Testimonials"
+            title="Hear from our clients"
+            align="center"
+          />
         </div>
-        
       </div>
       <div className="w-full mb-8">
         <Marquee

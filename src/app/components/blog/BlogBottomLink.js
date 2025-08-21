@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect } from "react";
 import ButtonLink from "../button/ButtonLink";
 import BlogSingle from "../common/BlogSingle";
 import Hgroup from "../common/Hgroup";
@@ -34,28 +34,17 @@ const blogData = [
   },
 ];
 
-const NewsHome = () => {
+const BlogBottomLink = () => {
   return (
-    <section className="py-24  bg-darkgray-150/20 overflow-x-hidden news-home">
+    <section className="py-24  overflow-x-hidden">
       <div className="container mx-auto px-5">
         <div className="w-full relative  text-left text-[15.25px] text-black font-inter">
-          <div className="flex w-full justify-between items-center md:flex-row flex-col">
-            <div className="space-y-4  mb-5 md:mb-0" data-aos="fade-up">
-              {/*<div className="inline-block px-4 py-2 bg-gray-400 text-white text-sm rounded-lg">
-                Latest news & press
-              </div>
-              <h2 className="text-5xl font-geometr415-lt-bt tracking-tight leading-tight capitalize">
-                News & Blogs
-              </h2>*/}
-              <Hgroup
-                preTitle="Latest news & press"
-                title="News & Blogs"
-                align="left"
-              />
-            </div>
-            <div className="flex" data-aos="fade-up" data-aos-delay="100">
-              <ButtonLink title="View all Blog" href="/blog" type="white" />
-            </div>
+          <div className="w-full" data-aos="fade-up">
+            <Hgroup
+              preTitle="Latest news & press"
+              title="News & Blogs"
+              align="center "
+            />
           </div>
         </div>
 
@@ -64,8 +53,7 @@ const NewsHome = () => {
             <div
               key={item.id}
               data-aos="fade-up"
-              data-aos-anchor=".news-home"
-              data-aos-delay={100 + index * 100}
+              data-aos-delay={200 + index * 100}
             >
               <BlogSingle item={item} />
             </div>
@@ -76,4 +64,4 @@ const NewsHome = () => {
   );
 };
 
-export default NewsHome;
+export default BlogBottomLink;

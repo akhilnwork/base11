@@ -57,7 +57,12 @@ const ServicesHome = () => {
             <Events key={event.id} event={event} index={index} />
           ))
           
-        </div>*/}<Hgroup preTitle="Our Services" title="Discover Unmatched Comfort and Style" align="center" />  
+        </div>*/}
+        <Hgroup
+          preTitle="Our Services"
+          title="Discover Unmatched Comfort and Style"
+          align="center"
+        />
       </div>
     </section>
   );

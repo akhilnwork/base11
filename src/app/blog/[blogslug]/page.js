@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
+import BlogBottomLink from "@/app/components/blog/BlogBottomLink";
 
 // Mock blog data - In a real app, this would come from a CMS or API
 const blogData = [
@@ -75,114 +76,120 @@ const BlogContent = ({ blog }) => {
   // blog.content is already an array, no need to split
 
   return (
-    <article className="w-full lg:mt-25 mt-12 lg:py-25 py-20  bg-darkgray-150/20">
-      <section className="w-full">
-        <div className="container mx-auto px-5">
-          <div className="max-w-[1362px] mx-auto">
-            {/* Blog Content Section */}
-            <div className="w-full flex flex-col justify-start items-end gap-8 lg:gap-[43px]">
-              {/* Featured Image */}
-              <div className="w-full h-64 md:h-96 lg:h-[550px]  rounded-[30px] relative overflow-hidden">
-                <div className="flex absolute inset bg-black/20"></div>
-                <Image
-                  src={blog.featuredImage}
-                  alt="Featured blog image "
-                  width={1362}
-                  height={550}
-                  className="w-full h-full object-cover h-64 md:h-96 lg:h-[550px]"
-                  priority
-                />
-              </div>
+    <>
+      <article className="w-full lg:mt-25 mt-12 lg:py-25 py-20  bg-darkgray-150/20">
+        <section className="w-full">
+          <div className="container mx-auto px-5">
+            <div className="max-w-[1362px] mx-auto">
+              {/* Blog Content Section */}
+              <div className="w-full flex flex-col justify-start items-end gap-8 lg:gap-[43px]">
+                {/* Featured Image */}
+                <div className="w-full h-64 md:h-96 lg:h-[550px]  rounded-[30px] relative overflow-hidden">
+                  <div className="flex absolute inset bg-black/20"></div>
+                  <Image
+                    src={blog.featuredImage}
+                    alt="Featured blog image "
+                    width={1362}
+                    height={550}
+                    className="w-full h-full object-cover h-64 md:h-96 lg:h-[550px]"
+                    priority
+                  />
+                </div>
 
-              {/* First Content Section */}
-              <div className="w-full flex flex-col  gap-6 lg:gap-[30px]">
-                <h1 className="w-full text-left text-black text-3xl md:text-4xl lg:text-5xl font-normal font-['Geometr415_Lt_BT'] leading-8 lg:leading-[30px] tracking-wide">
-                  Spaces are being revolutionized modern architectural marvels.
-                </h1>
+                {/* First Content Section */}
+                <div className="w-full flex flex-col  gap-6 lg:gap-[30px]">
+                  <h1 className="w-full text-left text-black text-3xl md:text-4xl lg:text-5xl font-normal font-['Geometr415_Lt_BT'] leading-8 lg:leading-[30px] tracking-wide">
+                    Spaces are being revolutionized modern architectural
+                    marvels.
+                  </h1>
+                  <div className="w-full flex flex-col gap-6 lg:gap-[30px]">
+                    {blog.content &&
+                      blog.content.map((paragraph, index) => (
+                        <div
+                          key={index}
+                          className="w-full text-justify text-black text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-7 lg:leading-[30px]"
+                        >
+                          {paragraph}
+                        </div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Second Content Section */}
                 <div className="w-full flex flex-col gap-6 lg:gap-[30px]">
-                  {blog.content &&
-                    blog.content.map((paragraph, index) => (
+                  <h2 className="w-full text-left text-black text-3xl md:text-4xl lg:text-5xl font-normal font-['Geometr415_Lt_BT'] leading-8 lg:leading-[30px] tracking-wide">
+                    Growth and meaning of mechanical technology
+                  </h2>
+                  {blog.aftercontent &&
+                    blog.aftercontent.map((paragraph, index) => (
                       <div
                         key={index}
                         className="w-full text-justify text-black text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-7 lg:leading-[30px]"
                       >
-                        {paragraph}
+                        There are many variations of passages of Lorem Ipsum
+                        available, but the majority have suffered alteration in
+                        some form, by injected humour, or randomised words which
+                        don&apos;t look even slightly believable. If you are
+                        going to use a passage of Lorem Ipsum, you need to be
+                        sure there isn&apos;t anything embarrassing hidden in
+                        the middle of text. All the Lorem Ipsum generators on
+                        the Internet tend to repeat predefined chunks as
+                        necessary, making this the first true generator on the
+                        Internet. It uses a dictionary of over 200 Latin words,
+                        combined with a handful of model sentence structures, to
+                        generate Lorem Ipsum which looks reasonable. The
+                        generated Lorem Ipsum is therefore always free from
+                        repetition, injected humour, or non-characteristic words
+                        etc.
                       </div>
                     ))}
                 </div>
-              </div>
 
-              {/* Second Content Section */}
-              <div className="w-full flex flex-col gap-6 lg:gap-[30px]">
-                <h2 className="w-full text-left text-black text-3xl md:text-4xl lg:text-5xl font-normal font-['Geometr415_Lt_BT'] leading-8 lg:leading-[30px] tracking-wide">
-                  Growth and meaning of mechanical technology
-                </h2>
-                {blog.aftercontent &&
-                  blog.aftercontent.map((paragraph, index) => (
-                    <div
-                      key={index}
-                      className="w-full text-justify text-black text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-7 lg:leading-[30px]"
-                    >
-                      There are many variations of passages of Lorem Ipsum
-                      available, but the majority have suffered alteration in
-                      some form, by injected humour, or randomised words which
-                      don&apos;t look even slightly believable. If you are going to
-                      use a passage of Lorem Ipsum, you need to be sure there
-                      isn&apos;t anything embarrassing hidden in the middle of text.
-                      All the Lorem Ipsum generators on the Internet tend to
-                      repeat predefined chunks as necessary, making this the
-                      first true generator on the Internet. It uses a dictionary
-                      of over 200 Latin words, combined with a handful of model
-                      sentence structures, to generate Lorem Ipsum which looks
-                      reasonable. The generated Lorem Ipsum is therefore always
-                      free from repetition, injected humour, or
-                      non-characteristic words etc.
-                    </div>
-                  ))}
-              </div>
+                {/* Image Gallery */}
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-[30px]">
+                  {blog.images &&
+                    blog.images.map((imageSrc, index) => (
+                      <div
+                        key={index}
+                        className="w-full h-64 md:h-80 lg:h-[400px] rounded-[30px] overflow-hidden"
+                      >
+                        <Image
+                          src={imageSrc}
+                          alt={`Gallery image ${index + 1}`}
+                          width={666}
+                          height={400}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                </div>
 
-              {/* Image Gallery */}
-              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-[30px]">
-                {blog.images &&
-                  blog.images.map((imageSrc, index) => (
-                    <div
-                      key={index}
-                      className="w-full h-64 md:h-80 lg:h-[400px] rounded-[30px] overflow-hidden"
-                    >
-                      <Image
-                        src={imageSrc}
-                        alt={`Gallery image ${index + 1}`}
-                        width={666}
-                        height={400}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-              </div>
-
-              <div className="w-full text-justify text-black text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-7 lg:leading-[30px]">
-                <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don&apos;t look
-                  even slightly believable. If you are going to use a passage of
-                  Lorem Ipsum, you need to be sure there isn&apos;t anything
-                  embarrassing hidden in the middle of text. All the Lorem Ipsum
-                  generators on the Internet tend to repeat predefined chunks as
-                  necessary, making this the first true generator on the
-                  Internet. It uses a dictionary of over 200 Latin words,
-                  combined with a handful of model sentence structures, to
-                  generate Lorem Ipsum which looks reasonable. The generated
-                  Lorem Ipsum is therefore always free from repetition, injected
-                  humour, or non-characteristic words etc.
-                </p>
+                <div className="w-full text-justify text-black text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-7 lg:leading-[30px]">
+                  <p>
+                    There are many variations of passages of Lorem Ipsum
+                    available, but the majority have suffered alteration in some
+                    form, by injected humour, or randomised words which
+                    don&apos;t look even slightly believable. If you are going
+                    to use a passage of Lorem Ipsum, you need to be sure there
+                    isn&apos;t anything embarrassing hidden in the middle of
+                    text. All the Lorem Ipsum generators on the Internet tend to
+                    repeat predefined chunks as necessary, making this the first
+                    true generator on the Internet. It uses a dictionary of over
+                    200 Latin words, combined with a handful of model sentence
+                    structures, to generate Lorem Ipsum which looks reasonable.
+                    The generated Lorem Ipsum is therefore always free from
+                    repetition, injected humour, or non-characteristic words
+                    etc.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </article>
+        </section>
+      </article>
+      <BlogBottomLink />
+    </>
   );
 };
 

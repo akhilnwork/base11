@@ -65,7 +65,7 @@ const RealityOther = () => {
           className="play cursor-pointer hover:scale-110 transition-transform duration-200 z-30 absolute left-1/2 md:top-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2"
           onClick={handlePlayClick}
         >
-          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-20 lg:h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-20 lg:h-20 bg-white/10 rounded-full flex items-center justify-center">
             <Image
               src="/svg/play.svg"
               alt="Play Icon"

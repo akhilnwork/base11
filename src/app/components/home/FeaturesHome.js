@@ -54,7 +54,7 @@ const FeaturesHome = () => {
     <section className="py-28 bg-darkgray-150/20  overflow-x-hidden">
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-         {/*} <div
+          {/*} <div
             className="space-y-2"
             data-aos="fade-left"
             data-aos-offset="200"
@@ -69,7 +69,11 @@ const FeaturesHome = () => {
               A Venue Where Every Event Becomes a Masterpiece
             </h2>
           </div>*/}
-          <Hgroup preTitle="About us" title="A Venue Where Every Event Becomes a Masterpiece" align="left" />  
+          <Hgroup
+            preTitle="About us"
+            title="A Venue Where Every Event Becomes a Masterpiece"
+            align="left"
+          />
           <div
             className="space-y-6"
             data-aos="fade-right"
@@ -185,7 +189,9 @@ const Feature = ({ feature }) => {
         <h3 className="text-2xl font-geometr415-lt-bt capitalize tracking-tight">
           {feature.title}
         </h3>
-        <p className={`text-sm sm:text-base font-['Poppins'] tracking-normal leading-relaxed`}>
+        <p
+          className={`text-sm sm:text-base font-['Poppins'] tracking-normal leading-relaxed`}
+        >
           {feature.desc}
         </p>
       </div>

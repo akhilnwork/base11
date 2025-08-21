@@ -21,6 +21,7 @@ import "./globals.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import FloatingIcons from "./components/common/FloatingIcons";
+import AOSInitializer from "./components/common/AOSInitializer";
 
 export const metadata = {
   title: "Base Eleven | Hotel and Convention Center",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
       // className={`${poppins.variable} ${inter.variable} ${gildaDisplay.variable}`}
       >
         <div className="wrap">
+          <AOSInitializer />    
           <Header />
           {children}
           <Footer />

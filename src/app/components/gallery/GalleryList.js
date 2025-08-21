@@ -32,7 +32,7 @@ const GalleryList = () => {
     useLightbox();
 
   return (
-    <section className="w-full py-24" onMouseMove={handleMouseMove}>
+    <section className="w-full py-24 overflow-x-hidden" onMouseMove={handleMouseMove}>
       <div className="container mx-auto px-4 sm:px-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-[30px] rounded-[30px]">
           {PLACEHOLDER_IMAGES.map((src, idx) => (
@@ -44,6 +44,10 @@ const GalleryList = () => {
               onMouseLeave={handleMouseLeave}
               className="group relative w-full overflow-hidden bg-gray-200 rounded-[30px]"
               aria-label="Open gallery"
+              data-aos="zoom-in-up"
+              data-aos-delay={idx * 100}
+              data-aos-duration="600"
+              data-aos-easing="ease-out-back"
             >
               <Image
                 src={src}

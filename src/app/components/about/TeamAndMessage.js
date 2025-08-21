@@ -132,6 +132,7 @@ const TeamAndMessage = () => {
       className="w-full relative lg:pt-32  pt-20 pb-20 bg-darkgray-150/60 overflow-x-hidden"
       ref={containerRef}
       id="team-message-container"
+      
     >
       <div className="container mx-auto px-4 sm:px-5 lg:px-6" ref={widthRef}>
         {/* Sticky horizontal scroll container */}

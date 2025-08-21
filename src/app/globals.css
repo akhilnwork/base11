@@ -71,6 +71,28 @@
   }
 }
 
+.about-page-slider {
+  .swiper-pagination {
+    bottom:0 !important;
+    left: 20px !important;
+  }
+  .swiper-wrapper{
+    padding-bottom: 35px !important;
+  }
+  .swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color-darkgray-150);
+    opacity: 0.4;
+    transition: all 0.3s ease !important;
+    border-radius: 0.75rem;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--color-darkgray-150);
+    opacity: 1;
+    width: 2.6875rem;
+  }
+}
 .faclities {
   .swiper-pagination {
     right: 25px !important;
@@ -131,37 +153,4 @@
     opacity: 1;
     transform: scale(1.2);
   }
-}
-
-/* Custom Vertical Marquee Animation */
-@keyframes marquee-up {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes marquee-down {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-.custom-marquee-up {
-  animation: marquee-up 20s linear infinite;
-}
-
-.custom-marquee-down {
-  animation: marquee-down 20s linear infinite;
-}
-
-/* Pause animation on hover */
-.custom-marquee-up:hover,
-.custom-marquee-down:hover {
-  animation-play-state: paused;
 }

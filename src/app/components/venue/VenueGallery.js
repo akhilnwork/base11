@@ -33,7 +33,12 @@ const VenueGallery = () => {
       onMouseMove={handleMouseMove}
     >
       <div className="container mx-auto px-4 sm:px-5">
-        <div className="w-full mb-10">
+        <div 
+          className="w-full mb-10"
+          data-aos="fade-down"
+          data-aos-duration="600"
+          data-aos-easing="ease-out-cubic"
+        >
           <Hgroup preTitle="Lorem Ipsum " title="Gallery" align="center" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-[30px] rounded-[30px]">
@@ -46,6 +51,10 @@ const VenueGallery = () => {
               onMouseLeave={handleMouseLeave}
               className="group relative w-full overflow-hidden bg-gray-200 rounded-[30px]"
               aria-label="Open gallery"
+              data-aos="zoom-in-up"
+              data-aos-delay={200 + (idx * 150)}
+              data-aos-duration="600"
+              data-aos-easing="ease-out-back"
             >
               <Image
                 src={src}

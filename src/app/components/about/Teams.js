@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 const Teams = () => {
@@ -37,13 +38,25 @@ const Teams = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-black ">
-      {teamMembers.map((member) => (
-        <div key={member.id} className="relative w-full group">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-black">
+      {teamMembers.map((member, index) => (
+        <div 
+          key={member.id} 
+          className="relative w-full group"
+          data-aos="flip-left"
+          data-aos-delay={index * 200}
+          data-aos-duration="800"
+          data-aos-easing="ease-out-back"
+        >
           {/* Background Image */}
-          <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+          <div 
+            className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]"
+            data-aos="zoom-in-up"
+            data-aos-delay={index * 200 + 300}
+            data-aos-duration="700"
+          >
             <Image
-              className="w-full h-full rounded-t-[20px] sm:rounded-t-[25px] lg:rounded-t-[30px]  lg:rounded-b-[30px] object-cover object-top lg:object-center"
+              className="w-full h-full rounded-t-[20px] sm:rounded-t-[25px] lg:rounded-t-[30px] lg:rounded-b-[30px] object-cover object-top lg:object-center"
               width={387}
               height={450}
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -56,7 +69,13 @@ const Teams = () => {
           </div>
 
           {/* Content Section - Below image on mobile/tablet, overlay on desktop */}
-          <div className="lg:absolute lg:bottom-2.5 lg:left-2.5 lg:right-2.5 p-3 sm:p-4 lg:p-6 duration-300 transition-all bg-darkgray-150/80 lg:group-hover:bg-darkgray-150 rounded-b-[20px] sm:rounded-b-[25px] lg:rounded-[30px]">
+          <div 
+            className="lg:absolute lg:bottom-2.5 lg:left-2.5 lg:right-2.5 p-3 sm:p-4 lg:p-6 duration-300 transition-all bg-darkgray-150/80 lg:group-hover:bg-darkgray-150 rounded-b-[20px] sm:rounded-b-[25px] lg:rounded-[30px]"
+            data-aos="slide-up"
+            data-aos-delay={index * 200 + 500}
+            data-aos-duration="600"
+            data-aos-easing="ease-out-cubic"
+          >
             {/* Name */}
             <h3 className="text-lg sm:text-xl lg:text-2xl font-['Geometr415_Lt_BT'] capitalize mb-1 sm:mb-2 text-black">
               {member.name}

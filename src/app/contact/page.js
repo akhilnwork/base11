@@ -3,20 +3,7 @@ import ContactDetails from "../components/contact/ContactDetails";
 import ContactFom from "../components/common/ContactFom";
 import Hgroup from "../components/common/Hgroup";
 
-export const metadata = {
-  title: "Contact Us - Base Eleven Event Venue",
-  description:
-    "Get in touch with Base Eleven for your next event. Contact our team to plan your perfect wedding, corporate event, or celebration. Professional event planning services.",
-  keywords:
-    "contact Base Eleven, event planning contact, wedding venue contact, event inquiry, book venue",
-  openGraph: {
-    title: "Contact Us - Base Eleven Event Venue",
-    description:
-      "Get in touch with Base Eleven for your next event. Contact our team to plan your perfect wedding, corporate event, or celebration.",
-    type: "website",
-    images: ["/img/banner/contact-banner.png"],
-  },
-};
+
 
 export default function ContactPage() {
   return (

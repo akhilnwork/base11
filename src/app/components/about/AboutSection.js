@@ -150,9 +150,21 @@ const AboutSection = () => {
             </div>
 
             {/* Description */}
-            <div className="self-stretch text-sm sm:text-base lg:text-lg leading-[1.5] sm:leading-[27px] font-['Poppins'] text-black space-y-3 sm:space-y-4">
+            <div 
+              className="self-stretch text-sm sm:text-base lg:text-lg leading-[1.5] sm:leading-[27px] font-['Poppins'] text-black space-y-3 sm:space-y-4"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="800"
+              data-aos-easing="ease-out-cubic"
+            >
               {aboutContent.description.map((paragraph, index) => (
-                <p key={index} className="m-0">
+                <p 
+                  key={index} 
+                  className="m-0"
+                  data-aos="fade-right"
+                  data-aos-delay={500 + (index * 150)}
+                  data-aos-duration="600"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -160,7 +172,13 @@ const AboutSection = () => {
           </div>
 
           {/* Images Section with Swiper */}
-          <div className="flex w-full order-first lg:order-last">
+          <div 
+            className="flex w-full order-first lg:order-last about-page-slider"
+            data-aos="zoom-in-left"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+            data-aos-easing="ease-out-back"
+          >
             <Swiper
               modules={[Autoplay, Pagination]}
               spaceBetween={20}
@@ -209,10 +227,14 @@ const AboutSection = () => {
 
         {/* Statistics Section */}
         <div className="self-stretch grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 font-poppins">
-          {statistics.map((stat) => (
+          {statistics.map((stat, index) => (
             <div
               key={stat.id}
               className="w-full relative text-center bg-darkgray-150/20 hover:bg-darkgray-150/80 group transition-all duration-200 rounded-2xl sm:rounded-3xl lg:rounded-4xl overflow-hidden h-32 sm:h-40 lg:h-50"
+              data-aos="flip-up"
+              data-aos-delay={index * 200}
+              data-aos-duration="700"
+              data-aos-easing="ease-out-back"
             >
               <div className="absolute opacity-10 group-hover:opacity-80 transition-all duration-100">
                 <BrandMark />

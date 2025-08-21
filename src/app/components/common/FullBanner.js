@@ -33,7 +33,13 @@ const FullBanner = ({ src, title }) => {
       <div className="absolute inset-0 z-10">
         <div className="container mx-auto px-5 relative flex h-full items-center justify-center">
           <div className="text-center">
-            <h1 className="tracking-[-1px] text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-geometr415-lt-bt capitalize leading-tight">
+            <h1 
+              className="tracking-[-1px] text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-geometr415-lt-bt capitalize leading-tight"
+              data-aos="fade-up"
+              data-aos-delay="800"
+              data-aos-duration="1000"
+              data-aos-easing="ease-out-cubic"
+            >
               {title}
             </h1>
           </div>
@@ -49,6 +55,10 @@ const FullBanner = ({ src, title }) => {
         height={73}
         alt="Scroll"
         src="/svg/scroll-arrow.svg"
+        data-aos="bounce-in"
+        data-aos-delay="1200"
+        data-aos-duration="800"
+        data-aos-easing="ease-out-back"
       />
     </section>
   );

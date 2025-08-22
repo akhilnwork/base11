@@ -73,10 +73,10 @@
 
 .about-page-slider {
   .swiper-pagination {
-    bottom:0 !important;
+    bottom: 0 !important;
     left: 20px !important;
   }
-  .swiper-wrapper{
+  .swiper-wrapper {
     padding-bottom: 35px !important;
   }
   .swiper-pagination-bullet {
@@ -153,4 +153,23 @@
     opacity: 1;
     transform: scale(1.2);
   }
+}
+
+/* Custom Vertical Marquee Animation */
+@keyframes marquee-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.custom-marquee-up {
+  animation: marquee-up 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.custom-marquee-up:hover {
+  animation-play-state: paused;
 }

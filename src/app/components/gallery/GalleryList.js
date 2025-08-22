@@ -6,6 +6,7 @@ import useHoverCursor from "@/hooks/useHoverCursor";
 import HoverCursor from "../common/HoverCursor";
 import Lightbox from "../common/Lightbox";
 import { useLightbox } from "@/hooks/useLightbox";
+import Hgroup from "../common/Hgroup";
 
 const PLACEHOLDER_IMAGES = [
   "/img/news1.png",
@@ -32,8 +33,14 @@ const GalleryList = () => {
     useLightbox();
 
   return (
-    <section className="w-full py-24 overflow-x-hidden" onMouseMove={handleMouseMove}>
+    <section
+      className="w-full py-24 overflow-x-hidden"
+      onMouseMove={handleMouseMove}
+    >
       <div className="container mx-auto px-4 sm:px-5">
+        <div className="flex w-full pb-10">
+          <Hgroup title="Lorem Ipsum " preTitle="Gallery" />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-[30px] rounded-[30px]">
           {PLACEHOLDER_IMAGES.map((src, idx) => (
             <button

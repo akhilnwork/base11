@@ -15,7 +15,7 @@ const InnerBanner = ({ src, title }) => {
       <div className="absolute inset-0 z-10">
         <div className="container mx-auto px-5 relative flex h-full items-center ">
           <div className="flex">
-            <h1 
+            <h1
               className="tracking-[-1px] text-left xl:text-5xl text-3xl text-white font-geometr415-lt-bt capitalize"
               data-aos="slide-up"
               data-aos-delay="700"

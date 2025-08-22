@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       // className={`${poppins.variable} ${inter.variable} ${gildaDisplay.variable}`}
       >
         <div className="wrap">
-          <AOSInitializer />    
+          <AOSInitializer />
           <Header />
           {children}
           <Footer />

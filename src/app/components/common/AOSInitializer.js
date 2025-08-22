@@ -1,10 +1,9 @@
 // components/AOSInitializer.tsx
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function AOSInitializer() {
   useEffect(() => {
@@ -12,8 +11,8 @@ export default function AOSInitializer() {
       duration: 800,
       once: true,
       offset: 100,
-    })
-  }, [])
+    });
+  }, []);
 
-  return null
+  return null;
 }

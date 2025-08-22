@@ -1,5 +1,6 @@
 import BlogContent from "../components/blog/BlogContent";
 import InnerBanner from "../components/common/InnerBanner";
+import Pagination from "../components/common/Pagiantion";
 
 export const metadata = {
   title: "News & Blogs - Base Eleven Event Venue",
@@ -21,6 +22,9 @@ export default function BlogPage() {
     <>
       <InnerBanner src="/img/banner/news-banner.png" title="News & Blogs" />
       <BlogContent />
+      <section className=" flex justify-center items-center py-10 -mt-[60px] pb-25">
+        <Pagination />
+      </section>
     </>
   );
 }

@@ -2,8 +2,7 @@ import InnerBanner from "../components/common/InnerBanner";
 import ContactDetails from "../components/contact/ContactDetails";
 import ContactFom from "../components/common/ContactFom";
 import Hgroup from "../components/common/Hgroup";
-
-
+import ContactMap from "../components/contact/ContactMap";
 
 export default function ContactPage() {
   return (
@@ -21,6 +20,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ContactMap />
     </>
   );
 }

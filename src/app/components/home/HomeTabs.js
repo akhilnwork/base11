@@ -78,7 +78,7 @@ const HomeTabs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
           <Hgroup
             preTitle="Best solutions for"
-            title="Lorem Ipsum is simply dummy  text of the printing"
+            title="Lorem Ipsum is simply dummy /n text of the printing"
             align="left"
           />
           <div

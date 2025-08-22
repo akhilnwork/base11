@@ -150,7 +150,7 @@ const AboutSection = () => {
             </div>
 
             {/* Description */}
-            <div 
+            <div
               className="self-stretch text-sm sm:text-base lg:text-lg leading-[1.5] sm:leading-[27px] font-['Poppins'] text-black space-y-3 sm:space-y-4"
               data-aos="fade-up"
               data-aos-delay="300"
@@ -158,11 +158,11 @@ const AboutSection = () => {
               data-aos-easing="ease-out-cubic"
             >
               {aboutContent.description.map((paragraph, index) => (
-                <p 
-                  key={index} 
+                <p
+                  key={index}
                   className="m-0"
                   data-aos="fade-right"
-                  data-aos-delay={500 + (index * 150)}
+                  data-aos-delay={500 + index * 150}
                   data-aos-duration="600"
                 >
                   {paragraph}
@@ -172,7 +172,7 @@ const AboutSection = () => {
           </div>
 
           {/* Images Section with Swiper */}
-          <div 
+          <div
             className="flex w-full order-first lg:order-last about-page-slider"
             data-aos="zoom-in-left"
             data-aos-delay="200"

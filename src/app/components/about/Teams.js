@@ -40,8 +40,8 @@ const Teams = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-black">
       {teamMembers.map((member, index) => (
-        <div 
-          key={member.id} 
+        <div
+          key={member.id}
           className="relative w-full group"
           data-aos="flip-left"
           data-aos-delay={index * 200}
@@ -49,7 +49,7 @@ const Teams = () => {
           data-aos-easing="ease-out-back"
         >
           {/* Background Image */}
-          <div 
+          <div
             className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]"
             data-aos="zoom-in-up"
             data-aos-delay={index * 200 + 300}
@@ -69,7 +69,7 @@ const Teams = () => {
           </div>
 
           {/* Content Section - Below image on mobile/tablet, overlay on desktop */}
-          <div 
+          <div
             className="lg:absolute lg:bottom-2.5 lg:left-2.5 lg:right-2.5 p-3 sm:p-4 lg:p-6 duration-300 transition-all bg-darkgray-150/80 lg:group-hover:bg-darkgray-150 rounded-b-[20px] sm:rounded-b-[25px] lg:rounded-[30px]"
             data-aos="slide-up"
             data-aos-delay={index * 200 + 500}

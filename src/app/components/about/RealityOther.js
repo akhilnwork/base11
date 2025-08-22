@@ -45,7 +45,7 @@ const RealityOther = () => {
         <div className="absolute inset-0">
           <div className="container mx-auto relative z-10 h-full px-5 w-full object-cover sm:px-6 lg:px-8">
             <div className="flex flex-col absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-26 left-0 right-4 sm:right-auto max-w-full sm:max-w-2xl">
-              <h3 
+              <h3
                 className="ml-5 md:ml-0 font-['Geometr415_Lt_BT'] text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-left font-normal capitalize leading-tight sm:leading-[1.2] md:leading-[1.3] lg:leading-[60px] mb-4 sm:mb-6"
                 data-aos="slide-right"
                 data-aos-delay="600"
@@ -55,7 +55,7 @@ const RealityOther = () => {
                 Lorem Ipsum is simply dummy <br className="hidden sm:block" />
                 text of the printing
               </h3>
-              <div 
+              <div
                 className="flex pt-2 sm:pt-4 ml-5 md:ml-0"
                 data-aos="fade-up"
                 data-aos-delay="900"

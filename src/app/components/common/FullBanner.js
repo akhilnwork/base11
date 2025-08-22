@@ -33,7 +33,7 @@ const FullBanner = ({ src, title }) => {
       <div className="absolute inset-0 z-10">
         <div className="container mx-auto px-5 relative flex h-full items-center justify-center">
           <div className="text-center">
-            <h1 
+            <h1
               className="tracking-[-1px] text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-geometr415-lt-bt capitalize leading-tight"
               data-aos="fade-up"
               data-aos-delay="800"

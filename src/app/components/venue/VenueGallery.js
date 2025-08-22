@@ -33,7 +33,7 @@ const VenueGallery = () => {
       onMouseMove={handleMouseMove}
     >
       <div className="container mx-auto px-4 sm:px-5">
-        <div 
+        <div
           className="w-full mb-10"
           data-aos="fade-down"
           data-aos-duration="600"
@@ -52,7 +52,7 @@ const VenueGallery = () => {
               className="group relative w-full overflow-hidden bg-gray-200 rounded-[30px]"
               aria-label="Open gallery"
               data-aos="zoom-in-up"
-              data-aos-delay={200 + (idx * 150)}
+              data-aos-delay={200 + idx * 150}
               data-aos-duration="600"
               data-aos-easing="ease-out-back"
             >

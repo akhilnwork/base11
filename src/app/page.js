@@ -1,4 +1,3 @@
-
 import BannerHome from "./components/home/BannerHome";
 import AboutHome from "./components/home/AboutHome";
 import FeaturesHome from "./components/home/FeaturesHome";
@@ -8,11 +7,7 @@ import NewsHome from "./components/home/NewsHome";
 import TestimonialsHome from "./components/home/TestimonialsHome";
 import HomeTabs from "./components/home/HomeTabs";
 
-
-
 export default function Home() {
-
-
   return (
     <div className="w-full bg-white text-black font-poppins">
       <BannerHome />

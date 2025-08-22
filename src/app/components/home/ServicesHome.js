@@ -60,7 +60,7 @@ const ServicesHome = () => {
         </div>*/}
         <Hgroup
           preTitle="Our Services"
-          title="Discover Unmatched Comfort and Style"
+          title="Discover Unmatched /n Comfort and Style"
           align="center"
         />
       </div>

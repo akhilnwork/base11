@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "@/utils/cn";
 
 const Hgroup = ({ title, preTitle, align = "left" }) => {
@@ -31,7 +32,12 @@ const Hgroup = ({ title, preTitle, align = "left" }) => {
           isCenter ? "mx-auto" : "",
         )}
       >
-        {title}
+        {title?.split("/n").map((line, index, array) => (
+          <React.Fragment key={index}>
+            {line}
+            {index < array.length - 1 && <br />}
+          </React.Fragment>
+        ))}
       </h2>
     </hgroup>
   );

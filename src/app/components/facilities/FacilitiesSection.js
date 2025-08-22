@@ -141,7 +141,7 @@ const FacilitiesCard = memo(function FacilitiesCard({
           data-aos-easing="ease-out-cubic"
         >
           <div className="relative w-full flex flex-col items-start justify-start gap-5">
-            <div 
+            <div
               className="w-full relative font-geometr415-lt-bt flex"
               data-aos="fade-up"
               data-aos-delay="500"
@@ -149,7 +149,7 @@ const FacilitiesCard = memo(function FacilitiesCard({
             >
               <Hgroup title={section.title} preTitle={preTitle} align="left" />
             </div>
-            <div 
+            <div
               className="self-stretch relative text-sm sm:text-base lg:text-lg leading-[27px] text-black"
               data-aos="fade-up"
               data-aos-delay="700"
@@ -157,7 +157,7 @@ const FacilitiesCard = memo(function FacilitiesCard({
             >
               {section.description}
             </div>
-            <div 
+            <div
               className="relative text-sm sm:text-base"
               data-aos="fade-up"
               data-aos-delay="900"
@@ -165,11 +165,11 @@ const FacilitiesCard = memo(function FacilitiesCard({
             >
               <ul className="m-0 font-inherit leading-[30px] pl-[21px] list-disc list-inside">
                 {section.features?.map((feature, index) => (
-                  <li 
-                    key={index} 
+                  <li
+                    key={index}
                     className="mb-0"
                     data-aos="fade-right"
-                    data-aos-delay={1000 + (index * 100)}
+                    data-aos-delay={1000 + index * 100}
                     data-aos-duration="400"
                   >
                     {feature}
@@ -178,7 +178,7 @@ const FacilitiesCard = memo(function FacilitiesCard({
               </ul>
             </div>
 
-            <div 
+            <div
               className="w-full flex"
               data-aos="zoom-in"
               data-aos-delay="1300"

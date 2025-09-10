@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ButtonAction from "../button/ButtonAction";
+import { useFormSubmission } from "@/hooks/useFormSubmission";
+import { useFormValidation } from "@/hooks/useFormValidation";
 
 const PopUp = ({ isOpen, onClose, title, preTitle }) => {
   const [formData, setFormData] = useState({
@@ -12,86 +14,22 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("");
-
-  const validationRules = {
-    name: {
-      required: true,
-      minLength: 2,
-      maxLength: 50,
-      pattern: /^[a-zA-Z\s]+$/,
-    },
-    email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
-    phone: { required: true, pattern: /^[\+]?[1-9][\d]{0,15}$/ },
-    subject: { required: true, minLength: 3, maxLength: 100 },
-    message: { required: true, minLength: 10, maxLength: 1000 },
-  };
-
-  const validateField = (name, value) => {
-    const rules = validationRules[name];
-    const fieldErrors = [];
-
-    if (rules.required && !value.trim()) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} is required`,
-      );
-    }
-    if (
-      value.trim() &&
-      rules.minLength &&
-      value.trim().length < rules.minLength
-    ) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} must be at least ${rules.minLength} characters`,
-      );
-    }
-    if (rules.maxLength && value.trim().length > rules.maxLength) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} must be less than ${rules.maxLength} characters`,
-      );
-    }
-    if (rules.pattern && value.trim() && !rules.pattern.test(value.trim())) {
-      switch (name) {
-        case "email":
-          fieldErrors.push("Please enter a valid email address");
-          break;
-        case "phone":
-          fieldErrors.push("Please enter a valid phone number");
-          break;
-        case "name":
-          fieldErrors.push("Name can only contain letters and spaces");
-          break;
-        default:
-          fieldErrors.push(
-            `${name.charAt(0).toUpperCase() + name.slice(1)} format is invalid`,
-          );
-      }
-    }
-    return fieldErrors;
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    let isValid = true;
-    Object.keys(formData).forEach((fieldName) => {
-      const fieldErrors = validateField(fieldName, formData[fieldName]);
-      if (fieldErrors.length > 0) {
-        newErrors[fieldName] = fieldErrors;
-        isValid = false;
-      }
-    });
-    setErrors(newErrors);
-    return isValid;
-  };
+  const { isSubmitting, submitStatus, submitForm, resetForm } =
+    useFormSubmission();
+  const {
+    errors,
+    validateForm,
+    validateField,
+    clearFieldError,
+    clearAllErrors,
+    hasFieldError,
+    getFieldErrors,
+  } = useFormValidation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: [] }));
-    }
+    clearFieldError(name);
   };
 
   const handleBlur = (e) => {
@@ -105,22 +43,17 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    setIsSubmitting(true);
-    setSubmitStatus("");
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSubmitStatus("success");
+
+    const result = await submitForm(formData, title || "Contact Form");
+
+    if (result.success) {
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setErrors({});
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   const handleSuccessContinue = () => {
-    setSubmitStatus("");
+    resetForm();
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setErrors({});
     if (onClose) onClose();
@@ -201,12 +134,12 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Your Name*"
-                  className={`${inputBase} ${errors.name?.length ? errorRing : ""}`}
+                  className={`${inputBase} ${hasFieldError("name") ? errorRing : ""}`}
                   required
                 />
-                {errors.name?.length > 0 && (
+                {hasFieldError("name") && (
                   <div className="mt-2 text-red-600 text-sm">
-                    {errors.name.map((e, i) => (
+                    {getFieldErrors("name").map((e, i) => (
                       <p key={i}>{e}</p>
                     ))}
                   </div>
@@ -220,12 +153,12 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Your Email*"
-                  className={`${inputBase} ${errors.email?.length ? errorRing : ""}`}
+                  className={`${inputBase} ${hasFieldError("email") ? errorRing : ""}`}
                   required
                 />
-                {errors.email?.length > 0 && (
+                {hasFieldError("email") && (
                   <div className="mt-2 text-red-600 text-sm">
-                    {errors.email.map((e, i) => (
+                    {getFieldErrors("email").map((e, i) => (
                       <p key={i}>{e}</p>
                     ))}
                   </div>
@@ -242,12 +175,12 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Your Number*"
-                  className={`${inputBase} ${errors.phone?.length ? errorRing : ""}`}
+                  className={`${inputBase} ${hasFieldError("phone") ? errorRing : ""}`}
                   required
                 />
-                {errors.phone?.length > 0 && (
+                {hasFieldError("phone") && (
                   <div className="mt-2 text-red-600 text-sm">
-                    {errors.phone.map((e, i) => (
+                    {getFieldErrors("phone").map((e, i) => (
                       <p key={i}>{e}</p>
                     ))}
                   </div>
@@ -261,12 +194,12 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Subject*"
-                  className={`${inputBase} ${errors.subject?.length ? errorRing : ""}`}
+                  className={`${inputBase} ${hasFieldError("subject") ? errorRing : ""}`}
                   required
                 />
-                {errors.subject?.length > 0 && (
+                {hasFieldError("subject") && (
                   <div className="mt-2 text-red-600 text-sm">
-                    {errors.subject.map((e, i) => (
+                    {getFieldErrors("subject").map((e, i) => (
                       <p key={i}>{e}</p>
                     ))}
                   </div>
@@ -282,12 +215,12 @@ const PopUp = ({ isOpen, onClose, title, preTitle }) => {
                 onBlur={handleBlur}
                 placeholder="Write your message here*"
                 rows={4}
-                className={`${textareaBase} ${errors.message?.length ? errorRing : ""} sm:rows-6`}
+                className={`${textareaBase} ${hasFieldError("message") ? errorRing : ""} sm:rows-6`}
                 required
               />
-              {errors.message?.length > 0 && (
+              {hasFieldError("message") && (
                 <div className="mt-2 text-red-600 text-sm">
-                  {errors.message.map((e, i) => (
+                  {getFieldErrors("message").map((e, i) => (
                     <p key={i}>{e}</p>
                   ))}
                 </div>

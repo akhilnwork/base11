@@ -25,7 +25,7 @@ const statistics = [
   },
 ];
 
-const VenueSection = () => {
+const VenueSection = ({ description, sub_images }) => {
   return (
     <section className="w-full py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-5">
@@ -39,12 +39,13 @@ const VenueSection = () => {
           {/* Left Image */}
           <div className="w-full xl:w-auto xl:flex-shrink-0">
             <Image
+              id="img1"
               className="w-full sm:max-w-none xl:w-[400px] 2xl:w-[527px] rounded-[20px] sm:rounded-[30px] h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] object-cover"
               width={527}
               height={700}
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, (max-width: 1536px) 400px, 527px"
               alt="Hall 01 - Main venue space"
-              src="/img/temp/hall.png"
+              src={sub_images && sub_images.length > 0 && sub_images[0].url}
               priority
             />
           </div>
@@ -54,28 +55,20 @@ const VenueSection = () => {
             {/* Description */}
             <div className="space-y-3 sm:space-y-4 pl-[20%]">
               <p className="text-sm sm:text-base lg:text-lg text-black leading-relaxed font-poppins">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard
-                dummy text ever since the 1500s, when an unknown printer took a
-                galley of type and scrambled it to make a type specimen book. It
-                has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                {description}
               </p>
             </div>
 
             {/* Second Image */}
             <div className="w-full flex flex-row gap-4">
               <Image
+                id="img2"
                 className="w-full max-w-full sm:max-w-[500px] lg:max-w-[600px] xl:max-w-[665px] rounded-[20px] sm:rounded-[30px] h-[250px] sm:h-[300px] lg:h-[400px]  object-cover"
                 width={665}
                 height={477}
                 sizes="(max-width: 60px) 100vw, (max-width: 1024px) 500px, (max-width: 1280px) 600px, 665px"
                 alt="Hall 01 - Interior details"
-                src="/img/temp/hall2.png"
+                src={sub_images && sub_images.length > 1 && sub_images[1].url}
               />
 
               <div className="w-full h-[400px] overflow-hidden relative">

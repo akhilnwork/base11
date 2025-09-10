@@ -8,19 +8,19 @@ import Lightbox from "../common/Lightbox";
 import { useLightbox } from "@/hooks/useLightbox";
 import Hgroup from "../common/Hgroup";
 
-const PLACEHOLDER_IMAGES = [
-  "/img/news1.png",
-  "/img/news2.png",
-  "/img/news3.png",
-  "/img/acc/1.png",
-  "/img/acc/2.png",
-  "/img/acc/3.png",
-  "/img/acc/4.png",
-  "/img/acc/5.png",
-  "/img/acc/6.png",
-];
+// const PLACEHOLDER_IMAGES = [
+//   "/img/news1.png",
+//   "/img/news2.png",
+//   "/img/news3.png",
+//   "/img/acc/1.png",
+//   "/img/acc/2.png",
+//   "/img/acc/3.png",
+//   "/img/acc/4.png",
+//   "/img/acc/5.png",
+//   "/img/acc/6.png",
+// ];
 
-const GalleryList = () => {
+const GalleryList = ({ posts }) => {
   const {
     cursorPosition,
     showCursor,
@@ -42,11 +42,11 @@ const GalleryList = () => {
           <Hgroup title="Lorem Ipsum " preTitle="Gallery" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-[30px] rounded-[30px]">
-          {PLACEHOLDER_IMAGES.map((src, idx) => (
+          {posts?.data?.map(({ id, title, cover_image, images_count }, idx) => (
             <button
-              key={src + idx}
+              key={id}
               type="button"
-              onClick={() => open(idx)}
+              onClick={() => open(id, images_count)}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="group relative w-full overflow-hidden bg-gray-200 rounded-[30px]"
@@ -57,8 +57,8 @@ const GalleryList = () => {
               data-aos-easing="ease-out-back"
             >
               <Image
-                src={src}
-                alt="Gallery placeholder"
+                src={cover_image.url}
+                alt={title}
                 width={600}
                 height={600}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"

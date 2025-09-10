@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import Image from "next/image";
 import useHoverCursor from "@/hooks/useHoverCursor";
 import HoverCursor from "../common/HoverCursor";
@@ -8,14 +8,7 @@ import Lightbox from "../common/Lightbox";
 import { useLightbox } from "@/hooks/useLightbox";
 import Hgroup from "../common/Hgroup";
 
-const VENUE_IMAGES = [
-  "/img/facilities/hall.png",
-  "/img/facilities/wedding.png",
-  "/img/facilities/dininig.png",
-  "/img/facilities/landscape.png",
-];
-
-const VenueGallery = () => {
+const VenueGallery = ({ gallery }) => {
   const {
     cursorPosition,
     showCursor,
@@ -24,8 +17,20 @@ const VenueGallery = () => {
     handleMouseLeave,
   } = useHoverCursor();
 
+  // Memoize the items transformation to prevent recreation on every render
+  const lightboxItems = useMemo(() => {
+    return (
+      gallery?.images?.map((img) => ({
+        src: img.url,
+        thumb: img.url,
+        caption: img.alt || "Gallery image",
+        id: img.id,
+      })) || []
+    );
+  }, [gallery?.images]);
+
   const { isOpen, items, currentIndex, open, close, next, prev, setIndex } =
-    useLightbox();
+    useLightbox({ items: lightboxItems });
 
   return (
     <section
@@ -42,9 +47,9 @@ const VenueGallery = () => {
           <Hgroup preTitle="Lorem Ipsum " title="Gallery" align="center" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-[30px] rounded-[30px]">
-          {VENUE_IMAGES.map((src, idx) => (
+          {gallery?.images.map(({ id, url, alt }, idx) => (
             <button
-              key={src + idx}
+              key={id}
               type="button"
               onClick={() => open(idx)}
               onMouseEnter={handleMouseEnter}
@@ -57,8 +62,8 @@ const VenueGallery = () => {
               data-aos-easing="ease-out-back"
             >
               <Image
-                src={src}
-                alt="Venue gallery"
+                src={url}
+                alt={alt}
                 width={600}
                 height={600}
                 sizes="(max-width: 640px) 100vw, 50vw"

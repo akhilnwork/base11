@@ -4,37 +4,7 @@ import ButtonLink from "../button/ButtonLink";
 import BlogSingle from "../common/BlogSingle";
 import Hgroup from "../common/Hgroup";
 
-const blogData = [
-  {
-    id: 1,
-    title:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "news1.png",
-    url: "/blog/1",
-  },
-  {
-    id: 2,
-    title: "There are many variations of passages of Lorem Ipsum available.",
-    image: "news2.png",
-    url: "/blog/2",
-  },
-  {
-    id: 3,
-    title:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "news3.png",
-    url: "/blog/3",
-  },
-  {
-    id: 4,
-    title:
-      "When an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    image: "news4.png",
-    url: "/blog/4",
-  },
-];
-
-const NewsHome = () => {
+const NewsHome = ({ posts }) => {
   return (
     <section className="py-24  bg-darkgray-150/20 overflow-x-hidden news-home">
       <div className="container mx-auto px-5">
@@ -60,9 +30,9 @@ const NewsHome = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-12">
-          {blogData.map((item, index) => (
+          {posts?.data?.map((item, index) => (
             <div
-              key={item.id}
+              key={item.id || item.slug || `news-${index}`}
               data-aos="fade-up"
               data-aos-anchor=".news-home"
               data-aos-delay={100 + index * 100}

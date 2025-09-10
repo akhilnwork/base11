@@ -16,9 +16,9 @@ const BlogSingle = ({ item }) => {
 
   return (
     <>
-      <div key={item.id} className="space-y-4">
+      <div className="space-y-4">
         <Link
-          href={item.url}
+          href={`/blog/${item.slug}`}
           className="cursor-none"
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
@@ -26,9 +26,9 @@ const BlogSingle = ({ item }) => {
         >
           <div className=" rounded-2xl overflow-hidden">
             <Image
-              src={`/img/${item.image}`}
+              src={item.featured_image.url}
               alt={item.title}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-2xl md:max-h-[440px] md:min-h-[440px]"
               width={388}
               height={440}
             />

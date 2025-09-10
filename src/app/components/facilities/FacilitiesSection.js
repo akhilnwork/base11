@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { cn } from "@/utils/cn";
 import Hgroup from "../common/Hgroup";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -200,6 +200,17 @@ const FacilitiesCard = memo(function FacilitiesCard({
 
 const FacilitiesSection = () => {
   const contactModal = useModal(false);
+  const [selectedSection, setSelectedSection] = useState(null);
+
+  const handleEnquire = (section) => {
+    setSelectedSection(section);
+    contactModal.open();
+  };
+
+  const handleCloseModal = () => {
+    setSelectedSection(null);
+    contactModal.close();
+  };
 
   return (
     <>
@@ -210,13 +221,17 @@ const FacilitiesSection = () => {
           preTitle={facilitiesData.title}
           isPriority={index === 0}
           isEven={index % 2 === 1}
-          onEnquire={contactModal.open}
+          onEnquire={() => handleEnquire(section)}
         />
       ))}
       <PopUp
         isOpen={contactModal.isOpen}
-        onClose={contactModal.close}
-        title="Enquire Now"
+        onClose={handleCloseModal}
+        title={
+          selectedSection
+            ? `Enquire Now : ${selectedSection.title}`
+            : "Enquire Now"
+        }
         preTitle="Contact"
       />
     </>

@@ -6,8 +6,11 @@ import Reality360 from "./components/home/Reality360";
 import NewsHome from "./components/home/NewsHome";
 import TestimonialsHome from "./components/home/TestimonialsHome";
 import HomeTabs from "./components/home/HomeTabs";
-
-export default function Home() {
+import FetchSsr from "./components/common/FetchSsr";
+export default async function Home() {
+  const testimonialPosts = await FetchSsr("/testimonials");
+  const venuePosts = await FetchSsr("/venues");
+  const blogPosts = await FetchSsr("/blogs/latest");
   return (
     <div className="w-full bg-white text-black font-poppins">
       <BannerHome />
@@ -16,9 +19,9 @@ export default function Home() {
       <ServicesHome />
       <Reality360 />
 
-      <TestimonialsHome />
-      <HomeTabs />
-      <NewsHome />
+      <TestimonialsHome posts={testimonialPosts} />
+      <HomeTabs posts={venuePosts} />
+      <NewsHome posts={blogPosts} />
     </div>
   );
 }

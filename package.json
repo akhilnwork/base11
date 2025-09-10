@@ -21,6 +21,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-fast-marquee": "^1.6.5",
+    "sanitize-html": "^2.17.0",
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.0"
   },

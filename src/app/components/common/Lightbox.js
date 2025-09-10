@@ -111,7 +111,7 @@ export default function Lightbox({
             <div className="flex gap-2">
               {items.map((item, i) => (
                 <button
-                  key={item.src + i}
+                  key={item.id || item.src || `image-${i}`}
                   type="button"
                   onClick={() => onSelect(i)}
                   className={`relative h-16 w-16 rounded-md overflow-hidden border ${i === index ? "border-white" : "border-transparent"}`}

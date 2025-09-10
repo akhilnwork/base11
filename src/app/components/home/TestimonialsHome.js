@@ -54,7 +54,7 @@ const testimonials = [
   },
 ];
 
-const TestimonialsHome = () => {
+const TestimonialsHome = ({ posts }) => {
   return (
     <section className="py-24 overflow-x-hidden bg-darkgray-150/20">
       <div className="container mx-auto px-5">
@@ -81,9 +81,9 @@ const TestimonialsHome = () => {
           pauseOnHover={true}
           className="w-full"
         >
-          {testimonials.map((testimonial, index) => (
+          {posts?.data?.map((testimonial, index) => (
             <TestimonialCard
-              key={testimonial.id}
+              key={testimonial?.id}
               testimonial={testimonial}
               index={index}
             />
@@ -97,9 +97,9 @@ const TestimonialsHome = () => {
           pauseOnHover={true}
           className="w-full"
         >
-          {testimonials.map((testimonial, index) => (
+          {posts?.data?.map((testimonial, index) => (
             <TestimonialCard
-              key={testimonial.id}
+              key={testimonial?.id}
               testimonial={testimonial}
               index={index}
             />
@@ -111,6 +111,12 @@ const TestimonialsHome = () => {
 };
 
 const TestimonialCard = ({ testimonial, index }) => {
+  const {
+    name,
+    testimonial: testimonialText,
+    designation,
+    photo,
+  } = testimonial;
   const isEven =
     index % 2 === 0
       ? "bg-darkgray-300 border-dimgray-200"
@@ -125,7 +131,7 @@ const TestimonialCard = ({ testimonial, index }) => {
       >
         <div className="flex-1">
           <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-[27px] mb-6">
-            {testimonial.text}
+            {testimonialText}
           </p>
         </div>
 
@@ -134,15 +140,13 @@ const TestimonialCard = ({ testimonial, index }) => {
             className="rounded-[10px] w-[60px] h-[60px] object-cover"
             width={60}
             height={60}
-            alt={testimonial.name}
-            src={testimonial.image}
+            alt={photo?.alt}
+            src={photo?.url}
           />
           <div>
-            <h4 className="text-black font-medium leading-[21.6px]">
-              {testimonial.name}
-            </h4>
+            <h4 className="text-black font-medium leading-[21.6px]">{name}</h4>
             <p className="text-sm sm:text-base text-gray-300 leading-[21.6px]">
-              {testimonial.position}
+              {designation}
             </p>
           </div>
         </div>

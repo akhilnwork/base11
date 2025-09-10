@@ -34,7 +34,7 @@ const statistics = [
     label: "Guest Capacity",
   },
 ];
-const aboutSlider = ["about.png", "about1.png", "about.png", "about1.png"];
+//const aboutSlider = ["about.png", "about1.png", "about.png", "about1.png"];
 
 // Content data - can be moved to a config file or fetched from API
 const aboutContent = {
@@ -133,7 +133,7 @@ const AnimatedCounter = ({ value, duration = 2000 }) => {
   );
 };
 
-const AboutSection = () => {
+const AboutSection = ({ posts }) => {
   return (
     <section className="w-full relative py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4 sm:px-5 lg:px-6 flex flex-col gap-12 sm:gap-16 lg:gap-20">
@@ -208,15 +208,15 @@ const AboutSection = () => {
               }}
               className="w-full"
             >
-              {aboutSlider.map((item, index) => (
-                <SwiperSlide key={index}>
+              {posts?.data?.map(({ id, title, image }) => (
+                <SwiperSlide key={id}>
                   <div className="w-full relative">
                     <Image
-                      src={`/img/temp/${item}`}
-                      alt={item}
+                      src={image?.url}
+                      alt={title}
                       width={666}
                       height={560}
-                      className="object-cover w-full h-auto rounded-xl sm:rounded-2xl"
+                      className="object-cover w-full h-auto rounded-xl sm:rounded-2xl max-h-[500px]"
                     />
                   </div>
                 </SwiperSlide>

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import ButtonAction from "../button/ButtonAction";
 import { cn } from "@/utils/cn";
+import { useFormSubmission } from "@/hooks/useFormSubmission";
+import { useFormValidation } from "@/hooks/useFormValidation";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,9 +14,17 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("");
+  const { isSubmitting, submitStatus, submitForm, resetForm } =
+    useFormSubmission();
+  const {
+    errors,
+    validateForm,
+    validateField,
+    clearFieldError,
+    clearAllErrors,
+    hasFieldError,
+    getFieldErrors,
+  } = useFormValidation();
 
   // Common class names
   const baseInputClasses =
@@ -27,113 +37,13 @@ const ContactForm = () => {
   const errorInputClasses =
     "bg-red-50 border-red-300 focus:border-red-500 focus:ring-red-200";
 
-  // Validation rules
-  const validationRules = {
-    name: {
-      required: true,
-      minLength: 2,
-      maxLength: 50,
-      pattern: /^[a-zA-Z\s]+$/,
-    },
-    email: {
-      required: true,
-      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    },
-    phone: {
-      required: true,
-      pattern: /^[\+]?[1-9][\d]{0,15}$/,
-    },
-    subject: {
-      required: true,
-      minLength: 3,
-      maxLength: 100,
-    },
-    message: {
-      required: true,
-      minLength: 10,
-      maxLength: 1000,
-    },
-  };
-
-  // Validate individual field
-  const validateField = (name, value) => {
-    const rules = validationRules[name];
-    const fieldErrors = [];
-
-    if (rules.required && !value.trim()) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} is required`,
-      );
-    }
-
-    if (
-      value.trim() &&
-      rules.minLength &&
-      value.trim().length < rules.minLength
-    ) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} must be at least ${rules.minLength} characters`,
-      );
-    }
-
-    if (rules.maxLength && value.trim().length > rules.maxLength) {
-      fieldErrors.push(
-        `${name.charAt(0).toUpperCase() + name.slice(1)} must be less than ${rules.maxLength} characters`,
-      );
-    }
-
-    if (rules.pattern && !rules.pattern.test(value.trim())) {
-      switch (name) {
-        case "email":
-          fieldErrors.push("Please enter a valid email address");
-          break;
-        case "phone":
-          fieldErrors.push("Please enter a valid phone number");
-          break;
-        case "name":
-          fieldErrors.push("Name can only contain letters and spaces");
-          break;
-        default:
-          fieldErrors.push(
-            `${name.charAt(0).toUpperCase() + name.slice(1)} format is invalid`,
-          );
-      }
-    }
-
-    return fieldErrors;
-  };
-
-  // Validate all fields
-  const validateForm = () => {
-    const newErrors = {};
-    let isValid = true;
-
-    Object.keys(formData).forEach((fieldName) => {
-      const fieldErrors = validateField(fieldName, formData[fieldName]);
-      if (fieldErrors.length > 0) {
-        newErrors[fieldName] = fieldErrors;
-        isValid = false;
-      }
-    });
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: [],
-      }));
-    }
+    clearFieldError(name);
   };
 
   const handleBlur = (e) => {
@@ -155,15 +65,9 @@ const ContactForm = () => {
       return;
     }
 
-    setIsSubmitting(true);
-    setSubmitStatus("");
+    const result = await submitForm(formData, "Contact Us");
 
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Success
-      setSubmitStatus("success");
+    if (result.success) {
       setFormData({
         name: "",
         email: "",
@@ -174,27 +78,21 @@ const ContactForm = () => {
       setErrors({});
 
       // Reset success message after 3 seconds
-      setTimeout(() => setSubmitStatus(""), 3000);
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
+      setTimeout(() => resetForm(), 3000);
     }
   };
 
   const getInputClassName = (fieldName) => {
-    const hasError = errors[fieldName] && errors[fieldName].length > 0;
     return cn(
       baseInputClasses,
-      hasError ? errorInputClasses : normalInputClasses,
+      hasFieldError(fieldName) ? errorInputClasses : normalInputClasses,
     );
   };
 
   const getTextareaClassName = (fieldName) => {
-    const hasError = errors[fieldName] && errors[fieldName].length > 0;
     return cn(
       baseTextareaClasses,
-      hasError ? errorInputClasses : normalInputClasses,
+      hasFieldError(fieldName) ? errorInputClasses : normalInputClasses,
     );
   };
 
@@ -232,9 +130,9 @@ const ContactForm = () => {
                 className={getInputClassName("name")}
                 required
               />
-              {errors.name && errors.name.length > 0 && (
+              {hasFieldError("name") && (
                 <div className="mt-2 text-red-600 text-sm">
-                  {errors.name.map((error, index) => (
+                  {getFieldErrors("name").map((error, index) => (
                     <p key={index}>{error}</p>
                   ))}
                 </div>
@@ -252,9 +150,9 @@ const ContactForm = () => {
                 className={getInputClassName("email")}
                 required
               />
-              {errors.email && errors.email.length > 0 && (
+              {hasFieldError("email") && (
                 <div className="mt-2 text-red-600 text-sm">
-                  {errors.email.map((error, index) => (
+                  {getFieldErrors("email").map((error, index) => (
                     <p key={index}>{error}</p>
                   ))}
                 </div>
@@ -275,9 +173,9 @@ const ContactForm = () => {
                 className={getInputClassName("phone")}
                 required
               />
-              {errors.phone && errors.phone.length > 0 && (
+              {hasFieldError("phone") && (
                 <div className="mt-2 text-red-600 text-sm">
-                  {errors.phone.map((error, index) => (
+                  {getFieldErrors("phone").map((error, index) => (
                     <p key={index}>{error}</p>
                   ))}
                 </div>
@@ -295,9 +193,9 @@ const ContactForm = () => {
                 className={getInputClassName("subject")}
                 required
               />
-              {errors.subject && errors.subject.length > 0 && (
+              {hasFieldError("subject") && (
                 <div className="mt-2 text-red-600 text-sm">
-                  {errors.subject.map((error, index) => (
+                  {getFieldErrors("subject").map((error, index) => (
                     <p key={index}>{error}</p>
                   ))}
                 </div>
@@ -317,9 +215,9 @@ const ContactForm = () => {
               className={getTextareaClassName("message")}
               required
             />
-            {errors.message && errors.message.length > 0 && (
+            {hasFieldError("message") && (
               <div className="mt-2 text-red-600 text-sm">
-                {errors.message.map((error, index) => (
+                {getFieldErrors("message").map((error, index) => (
                   <p key={index}>{error}</p>
                 ))}
               </div>

@@ -7,52 +7,7 @@ import useHoverCursor from "@/hooks/useHoverCursor";
 import HoverCursor from "../common/HoverCursor";
 import Hgroup from "../common/Hgroup";
 
-const tabs = [
-  {
-    id: 1,
-    title: "Hall 1 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/1.png",
-    link: "/hall-1",
-  },
-  {
-    id: 2,
-    title: "Hall 2 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/2.png",
-    link: "/hall-2",
-  },
-  {
-    id: 3,
-    title: "Hall 3 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/3.png",
-    link: "/hall-3",
-  },
-  {
-    id: 4,
-    title: "Hall 4 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/4.png",
-    link: "/hall-4",
-  },
-  {
-    id: 5,
-    title: "Hall 5 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/5.png",
-    link: "/hall-5",
-  },
-  {
-    id: 6,
-    title: "Hall 6 + Courtyard",
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly.",
-    image: "/img/acc/6.png",
-    link: "/hall-6",
-  },
-];
-
-const HomeTabs = () => {
+const HomeTabs = ({ posts }) => {
   const [activeTab, setActiveTab] = useState(1);
   const router = useRouter();
   const {
@@ -63,10 +18,10 @@ const HomeTabs = () => {
     handleMouseLeave,
   } = useHoverCursor();
 
-  const handleTabClick = (tabId) => {
+  const handleTabClick = (tabId, slug) => {
     if (activeTab === tabId) {
-      const tab = tabs.find((t) => t.id === tabId);
-      if (tab?.link) router.push(tab.link);
+      if (slug) router.push(`/venues/${slug}`);
+
       return;
     }
     setActiveTab(tabId);
@@ -103,7 +58,7 @@ const HomeTabs = () => {
         </div>
 
         <div className="flex flex-col gap-4 md:flex-row md:gap-[15px]">
-          {tabs.map((tab) => {
+          {posts?.data?.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
               <div
@@ -115,17 +70,17 @@ const HomeTabs = () => {
                       : "h-[80px] md:h-[700px] md:w-[100px]"
                   }`,
                 )}
-                onClick={() => handleTabClick(tab.id)}
+                onClick={() => handleTabClick(tab.id, tab.slug)}
                 onMouseMove={isActive ? handleMouseMove : undefined}
                 onMouseEnter={isActive ? handleMouseEnter : undefined}
                 onMouseLeave={isActive ? handleMouseLeave : undefined}
               >
                 <Image
-                  src={tab.image}
+                  src={tab?.cover_image?.url}
                   className="w-full h-full object-cover"
                   height={700}
                   width={1200}
-                  alt={tab.title}
+                  alt={tab?.title}
                 />
                 <div
                   className={cn(
@@ -142,7 +97,7 @@ const HomeTabs = () => {
                   )}
                 >
                   <h3 className="text-black xl:text-3xl md:text-2xl text-xl font-normal font-geometr415-lt-bt mb-2.5">
-                    {tab.title}
+                    {tab?.title}
                   </h3>
                   <div
                     className={cn(
@@ -151,7 +106,7 @@ const HomeTabs = () => {
                     )}
                   >
                     <p className="text-black/80 text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-relaxed">
-                      {tab.text}
+                      {tab.description}
                     </p>
                   </div>
                 </div>

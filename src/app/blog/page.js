@@ -1,7 +1,6 @@
 import BlogContent from "../components/blog/BlogContent";
 import InnerBanner from "../components/common/InnerBanner";
-import Pagination from "../components/common/Pagiantion";
-
+import FetchSsr from "../components/common/FetchSsr";
 export const metadata = {
   title: "News & Blogs - Base Eleven Event Venue",
   description:
@@ -17,14 +16,12 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await FetchSsr("/blogs");
   return (
     <>
       <InnerBanner src="/img/banner/news-banner.png" title="News & Blogs" />
-      <BlogContent />
-      <section className=" flex justify-center items-center py-10 -mt-[60px] pb-25">
-        <Pagination />
-      </section>
+      <BlogContent posts={posts} />
     </>
   );
 }

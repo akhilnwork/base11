@@ -53,21 +53,21 @@ const venues = [
   },
 ];
 
-const VenueList = () => {
+const VenueList = ({ posts, slug }) => {
   return (
     <section className="w-full bg-darkgray-150/20 py-6 sm:py-8 lg:py-12">
       <div className="w-full px-4 sm:px-5">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-6 lg:gap-[29px]">
-          {venues.map((venue) => (
+          {posts?.data?.map((venue) => (
             <Link
               key={venue.id}
-              title={venue.name}
-              href={venue.href}
+              title={venue.title}
+              href={venue.slug}
               className="group relative aspect-square rounded-[20px] sm:rounded-[30px] overflow-hidden hover:scale-105 transition-transform duration-300"
             >
               <Image
-                src={`/img/acc/${venue.image}`}
-                alt={`${venue.name} - Event venue space`}
+                src={venue.cover_image.url}
+                alt={venue.title}
                 className="w-full h-full object-cover"
                 width={250}
                 height={250}
@@ -76,13 +76,13 @@ const VenueList = () => {
               <div
                 className={cn(
                   "absolute inset-0 bg-black/60 transition-opacity duration-300 flex items-center justify-center",
-                  venue.active
+                  venue.slug === slug
                     ? "bg-darkgray-150 text-black"
                     : "opacity-0 group-hover:opacity-100  text-white",
                 )}
               >
                 <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-geometr415-lt-bt text-center px-2">
-                  {venue.name}
+                  {venue.title}
                 </h3>
               </div>
             </Link>

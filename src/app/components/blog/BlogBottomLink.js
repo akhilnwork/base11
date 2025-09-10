@@ -34,7 +34,7 @@ const blogData = [
   },
 ];
 
-const BlogBottomLink = () => {
+const BlogBottomLink = ({ related }) => {
   return (
     <section className="py-24  overflow-x-hidden">
       <div className="container mx-auto px-5">
@@ -49,9 +49,9 @@ const BlogBottomLink = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-12">
-          {blogData.map((item, index) => (
+          {related?.map((item, index) => (
             <div
-              key={item.id}
+              key={item.id || item.slug || `related-${index}`}
               data-aos="fade-up"
               data-aos-delay={200 + index * 100}
             >

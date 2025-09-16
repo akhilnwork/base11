@@ -125,7 +125,7 @@ const TestimonialCard = ({ testimonial, index }) => {
     <article className="px-4">
       <div
         className={cn(
-          `rounded-[20px] border border-dimgray p-6  flex flex-col w-[400px]`,
+          `rounded-[20px] border border-dimgray p-6  flex flex-col w-[400px] min-h-[400px]`,
           isEven,
         )}
       >

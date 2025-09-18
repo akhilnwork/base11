@@ -15,7 +15,7 @@ export async function GET() {
   // Add CORS headers
   response.headers.set(
     "Access-Control-Allow-Origin",
-    "https://cms.thebase11.com",
+    "https://cms.thebaseeleven.com",
   );
   response.headers.set(
     "Access-Control-Allow-Methods",
@@ -29,12 +29,11 @@ export async function GET() {
 
   return response;
 }
-
 export async function OPTIONS() {
   return new Response(null, {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": "https://cms.thebase11.com",
+      "Access-Control-Allow-Origin": "https://cms.thebaseeleven.com",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers":
         "Content-Type, Authorization, X-Requested-With",

@@ -7,7 +7,7 @@ export function middleware(request) {
   // Set CORS headers
   response.headers.set(
     "Access-Control-Allow-Origin",
-    "https://cms.thebase11.com",
+    process.env.LARAVEL_PUBLIC_URL || "http://localhost:8000",
   );
   response.headers.set(
     "Access-Control-Allow-Methods",

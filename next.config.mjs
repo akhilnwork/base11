@@ -20,7 +20,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cms.thebase11.com",
+        hostname: "cms.thebaseeleven.com",
         pathname: "/storage/**",
       },
     ],

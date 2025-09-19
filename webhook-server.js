@@ -28,7 +28,7 @@ app.post('/webhook/build', (req, res) => {
   }
 
   // Run npm build (uses local next binary)
-  exec('npm run build', { cwd: '/path/to/nextjs/project' }, (err, stdout, stderr) => {
+  exec('npm run build', { cwd: process.env.WEBHOOK_PROJECT_FOLDER }, (err, stdout, stderr) => {
     if (err) {
       fs.appendFileSync('build.log', stderr || err.message);
       console.error('Build error:', err);
@@ -39,8 +39,8 @@ app.post('/webhook/build', (req, res) => {
     console.log('Build output:', stdout);
 
     // If statically exported, copy /out to /var/www/html
-    if (fs.existsSync('/path/to/nextjs/project/out')) {
-      exec('xcopy /E /I /Y /path/to/nextjs/project/out /var/www/html', (copyErr, copyStdout, copyStderr) => {
+    if (fs.existsSync(process.env.WEBHOOK_PROJECT_FOLDER+'/out')) {
+      exec(`xcopy /E /I /Y ${process.env.WEBHOOK_PROJECT_FOLDER}/out /var/www/html`, (copyErr, copyStdout, copyStderr) => {
         if (copyErr) {
           fs.appendFileSync('build.log', copyStderr || copyErr.message);
           return res.status(500).json({ error: 'Copy failed', details: copyStderr || copyErr.message });

@@ -27,29 +27,30 @@ app.post('/webhook/build', (req, res) => {
     return res.status(401).json({ error: 'Invalid secret' });
   }
 
-  // Run next build
-  exec('next build', { cwd: '/path/to/nextjs/project' }, (err, stdout, stderr) => {
+  // Run npm build (uses local next binary)
+  exec('npm run build', { cwd: '/path/to/nextjs/project' }, (err, stdout, stderr) => {
     if (err) {
-      fs.appendFileSync('build.log', stderr);
-      console.error(stderr);
-      return res.status(500).json({ error: 'Build failed', details: stderr });
+      fs.appendFileSync('build.log', stderr || err.message);
+      console.error('Build error:', err);
+      console.error('stderr:', stderr);
+      return res.status(500).json({ error: 'Build failed', details: stderr || err.message });
     }
     fs.appendFileSync('build.log', stdout);
-    console.log(stdout);
+    console.log('Build output:', stdout);
 
     // If statically exported, copy /out to /var/www/html
     if (fs.existsSync('/path/to/nextjs/project/out')) {
       exec('xcopy /E /I /Y /path/to/nextjs/project/out /var/www/html', (copyErr, copyStdout, copyStderr) => {
         if (copyErr) {
-          fs.appendFileSync('build.log', copyStderr);
-          return res.status(500).json({ error: 'Copy failed', details: copyStderr });
+          fs.appendFileSync('build.log', copyStderr || copyErr.message);
+          return res.status(500).json({ error: 'Copy failed', details: copyStderr || copyErr.message });
         }
         fs.appendFileSync('build.log', copyStdout);
         // Optionally restart app if running in next start mode
         exec('pm2 restart next-app', (pm2Err, pm2Stdout, pm2Stderr) => {
           if (pm2Err) {
-            fs.appendFileSync('build.log', pm2Stderr);
-            return res.status(500).json({ error: 'Restart failed', details: pm2Stderr });
+            fs.appendFileSync('build.log', pm2Stderr || pm2Err.message);
+            return res.status(500).json({ error: 'Restart failed', details: pm2Stderr || pm2Err.message });
           }
           fs.appendFileSync('build.log', pm2Stdout);
           return res.status(200).json({ message: 'Build, copy, and restart successful' });
@@ -59,8 +60,8 @@ app.post('/webhook/build', (req, res) => {
       // If not static, just restart
       exec('pm2 restart next-app', (pm2Err, pm2Stdout, pm2Stderr) => {
         if (pm2Err) {
-          fs.appendFileSync('build.log', pm2Stderr);
-          return res.status(500).json({ error: 'Restart failed', details: pm2Stderr });
+          fs.appendFileSync('build.log', pm2Stderr || pm2Err.message);
+          return res.status(500).json({ error: 'Restart failed', details: pm2Stderr || pm2Err.message });
         }
         fs.appendFileSync('build.log', pm2Stdout);
         return res.status(200).json({ message: 'Build and restart successful' });

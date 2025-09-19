@@ -6,26 +6,16 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { cn } from "@/utils/cn";
 
-const Header = () => {
+const Header = ({links}) => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [venueSlug, setVenueSlug] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
   const isHomePage = pathname === "/";
+  console.log(links)
 
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Virtual Tour", href: "/virtual-tour" },
-    { name: "Facilities", href: "/facilities" },
-    {
-      name: "Venues",
-      href: isHydrated && venueSlug ? `/venues/${venueSlug}` : "/venues",
-    },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Blog", href: "/blog" },
-  ];
+  //const links = HeaderLinks();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,26 +35,32 @@ const Header = () => {
     setIsHydrated(true);
   }, []);
 
-  useEffect(() => {
-    const fetchVenueSlug = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/venues/latest-slug`,
-        );
-        const data = await response.json();
-        if (data.data?.slug) {
-          setVenueSlug(data.data.slug);
-        }
-      } catch (error) {
-        console.error("Error fetching venue slug:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchVenueSlug = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `${process.env.NEXT_PUBLIC_API_URL}/venues/latest-slug`,
+  //         { mode: 'no-cors',
+  //           method: "post",
+  //           headers: {
+  //                 "Content-Type": "application/json"
+  //           }
+  //         },
+  //       );
+  //       const data = await response.json();
+  //       if (data.data?.slug) {
+  //         setVenueSlug(data.data.slug);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching venue slug:", error);
+  //     }
+  //   };
 
-    // Only fetch after hydration to avoid mismatch
-    if (isHydrated) {
-      fetchVenueSlug();
-    }
-  }, [isHydrated]);
+  //   // Only fetch after hydration to avoid mismatch
+  //   if (isHydrated) {
+  //     fetchVenueSlug();
+  //   }
+  // }, [isHydrated]);
 
   // Close mobile menu when route changes
   useEffect(() => {

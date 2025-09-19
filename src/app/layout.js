@@ -18,10 +18,11 @@
 // });
 
 import "./globals.css";
-import Header from "./components/header/Header";
+
 import Footer from "./components/footer/Footer";
 import FloatingIcons from "./components/common/FloatingIcons";
 import AOSInitializer from "./components/common/AOSInitializer";
+import HeaderWrap from "./components/header/HeaderWrap";
 
 export const metadata = {
   title: "Base Eleven | Hotel and Convention Center",
@@ -43,7 +44,7 @@ export default function RootLayout({ children }) {
       >
         <div className="wrap">
           <AOSInitializer />
-          <Header />
+          <HeaderWrap />
           {children}
           <Footer />
           <FloatingIcons />
